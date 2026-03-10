@@ -1,0 +1,4 @@
+// 型別定義目錄
+// 放置全域共用的 TypeScript 型別與介面
+// 範例：api.d.ts, models.d.ts
+export {};
