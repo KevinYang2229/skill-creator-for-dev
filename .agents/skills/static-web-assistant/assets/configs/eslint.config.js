@@ -1,0 +1,35 @@
+export default [
+  {
+    languageOptions: {
+      ecmaVersion: 'latest',
+      sourceType: 'module',
+      globals: {
+        document: 'readonly',
+        window: 'readonly',
+        navigator: 'readonly',
+        console: 'readonly',
+        fetch: 'readonly',
+        setTimeout: 'readonly',
+        clearTimeout: 'readonly',
+        IntersectionObserver: 'readonly',
+        FormData: 'readonly',
+        AbortController: 'readonly',
+      },
+    },
+    rules: {
+      'no-var': 'error',
+      'prefer-const': 'error',
+      'prefer-template': 'warn',
+      eqeqeq: ['error', 'always'],
+      'no-unused-vars': ['warn', { argsIgnorePattern: '^_' }],
+      'no-console': ['warn', { allow: ['warn', 'error'] }],
+      curly: ['error', 'all'],
+      'no-nested-ternary': 'error',
+      'max-depth': ['warn', 3],
+      'max-params': ['warn', 3],
+      'prefer-arrow-callback': 'warn',
+      'no-eval': 'error',
+      'no-implied-eval': 'error',
+    },
+  },
+];

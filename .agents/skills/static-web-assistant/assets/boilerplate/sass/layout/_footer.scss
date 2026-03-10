@@ -1,0 +1,20 @@
+// _footer.scss — 頁尾佈局
+@use '../base/variables' as vars;
+@use '../utilities/mixins' as mix;
+
+.footer {
+  background-color: vars.$color-bg-alt;
+  border-top: 1px solid vars.$color-border;
+  padding: vars.$spacing-xl 0;
+
+  &__container {
+    @include mix.container;
+
+    text-align: center;
+  }
+
+  &__copyright {
+    color: vars.$color-text-light;
+    font-size: vars.$font-size-sm;
+  }
+}

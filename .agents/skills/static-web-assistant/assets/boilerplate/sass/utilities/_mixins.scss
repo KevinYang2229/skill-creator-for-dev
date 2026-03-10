@@ -1,0 +1,83 @@
+// _mixins.scss — 可重用的 Mixin 集合
+@use '../base/variables' as vars;
+
+/// 響應式斷點 Mixin (Mobile-First)
+/// @param {String} $breakpoint - 斷點名稱 (sm, md, lg, xl, 2xl)
+@mixin respond-to($breakpoint) {
+  @if $breakpoint ==sm {
+    @media (min-width: vars.$breakpoint-sm) {
+      @content;
+    }
+  }
+
+  @else if $breakpoint ==md {
+    @media (min-width: vars.$breakpoint-md) {
+      @content;
+    }
+  }
+
+  @else if $breakpoint ==lg {
+    @media (min-width: vars.$breakpoint-lg) {
+      @content;
+    }
+  }
+
+  @else if $breakpoint ==xl {
+    @media (min-width: vars.$breakpoint-xl) {
+      @content;
+    }
+  }
+
+  @else if $breakpoint ==2xl {
+    @media (min-width: vars.$breakpoint-2xl) {
+      @content;
+    }
+  }
+}
+
+/// Flex 置中
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/// 文字截斷（單行）
+@mixin text-truncate {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/// 文字截斷（多行）
+/// @param {Number} $lines - 顯示行數
+@mixin text-clamp($lines) {
+  display: -webkit-box;
+  -webkit-line-clamp: $lines;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+/// 視覺隱藏（保留螢幕閱讀器存取）
+@mixin visually-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  border: 0;
+}
+
+/// 容器置中
+/// @param {Length} $max-width [1200px] - 最大寬度
+/// @param {Length} $padding [vars.$spacing-md] - 左右內距
+@mixin container($max-width: 1200px, $padding: vars.$spacing-md) {
+  width: 100%;
+  max-width: $max-width;
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: $padding;
+  padding-right: $padding;
+}

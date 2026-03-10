@@ -1,0 +1,93 @@
+// _reset.scss — CSS Reset（基於 Modern CSS Reset）
+
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  text-size-adjust: none;
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+
+// 圖片與媒體元素
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+  height: auto;
+}
+
+// 表單元素繼承字型
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+// 文字換行
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
+}
+
+// 標題行高
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  line-height: 1.2;
+}
+
+// 列表
+ul[role='list'],
+ol[role='list'] {
+  list-style: none;
+}
+
+// 連結
+a {
+  color: inherit;
+  text-decoration-skip-ink: auto;
+}
+
+// 按鈕
+button {
+  cursor: pointer;
+  background: none;
+  border: none;
+}
+
+// stylelint-disable declaration-no-important -- 減少動畫是無障礙需求，需要覆蓋所有動畫
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+// stylelint-enable declaration-no-important

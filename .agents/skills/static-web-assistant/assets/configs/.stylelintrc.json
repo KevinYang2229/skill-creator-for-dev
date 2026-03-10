@@ -1,0 +1,31 @@
+{
+  "extends": [
+    "stylelint-config-standard-scss"
+  ],
+  "rules": {
+    "selector-class-pattern": "^[a-z][a-z0-9]*(?:__[a-z][a-z0-9]*)?(?:--[a-z][a-z0-9]*)?$",
+    "max-nesting-depth": [
+      3,
+      {
+        "ignoreAtRules": [
+          "media",
+          "supports",
+          "include"
+        ]
+      }
+    ],
+    "selector-max-id": 0,
+    "declaration-no-important": true,
+    "color-named": "never",
+    "shorthand-property-no-redundant-values": true,
+    "scss/dollar-variable-pattern": "^[a-z][a-z0-9]*(-[a-z0-9]+)*$",
+    "scss/at-mixin-pattern": "^[a-z][a-z0-9]*(-[a-z0-9]+)*$",
+    "scss/no-global-function-names": true,
+    "scss/at-if-closing-brace-newline-after": null,
+    "scss/at-if-closing-brace-space-after": null,
+    "scss/at-else-closing-brace-newline-after": null,
+    "scss/at-else-closing-brace-space-after": null,
+    "scss/at-else-empty-line-before": null,
+    "scss/operator-no-unspaced": null
+  }
+}

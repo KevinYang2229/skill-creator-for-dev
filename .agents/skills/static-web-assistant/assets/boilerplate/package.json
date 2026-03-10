@@ -1,0 +1,23 @@
+{
+  "name": "static-web-boilerplate",
+  "version": "1.0.0",
+  "description": "靜態網頁專案模板",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "sass:watch": "sass --watch sass/main.scss:css/main.css",
+    "sass:build": "sass sass/main.scss:css/main.css --style compressed --no-source-map",
+    "lint:js": "eslint js/**/*.js",
+    "lint:css": "stylelint 'sass/**/*.scss'",
+    "lint": "npm run lint:js && npm run lint:css",
+    "format": "prettier --write '**/*.{html,js,scss,json}'"
+  },
+  "devDependencies": {
+    "sass": "^1.80.0",
+    "eslint": "^9.0.0",
+    "@eslint/js": "^9.0.0",
+    "stylelint": "^16.0.0",
+    "stylelint-config-standard-scss": "^14.0.0",
+    "prettier": "^3.4.0"
+  }
+}

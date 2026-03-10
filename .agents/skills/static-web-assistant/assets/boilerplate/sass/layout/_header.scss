@@ -1,0 +1,110 @@
+// _header.scss — 頁首佈局
+@use '../base/variables' as vars;
+@use '../utilities/mixins' as mix;
+
+.header {
+  position: sticky;
+  top: 0;
+  z-index: vars.$z-sticky;
+  background-color: vars.$color-bg;
+  border-bottom: 1px solid vars.$color-border;
+
+  &__container {
+    @include mix.container;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+  }
+
+  &__logo {
+    text-decoration: none;
+    font-size: vars.$font-size-lg;
+    font-weight: 700;
+    color: vars.$color-text;
+  }
+
+  // 行動裝置漢堡選單按鈕
+  &__menu-toggle {
+    display: flex;
+    padding: vars.$spacing-sm;
+
+    @include mix.respond-to(md) {
+      display: none;
+    }
+  }
+
+  &__menu-icon {
+    display: block;
+    width: 24px;
+    height: 2px;
+    background-color: vars.$color-text;
+    position: relative;
+
+    &::before,
+    &::after {
+      content: '';
+      display: block;
+      width: 24px;
+      height: 2px;
+      background-color: vars.$color-text;
+      position: absolute;
+    }
+
+    &::before {
+      top: -7px;
+    }
+
+    &::after {
+      top: 7px;
+    }
+  }
+
+  // 導航
+  &__nav {
+    display: none;
+
+    &--open {
+      display: block;
+      position: absolute;
+      top: 64px;
+      left: 0;
+      right: 0;
+      background: vars.$color-bg;
+      border-bottom: 1px solid vars.$color-border;
+      padding: vars.$spacing-md;
+    }
+
+    @include mix.respond-to(md) {
+      display: flex;
+    }
+  }
+
+  &__nav-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: vars.$spacing-sm;
+
+    @include mix.respond-to(md) {
+      flex-direction: row;
+      gap: vars.$spacing-lg;
+    }
+  }
+
+  &__nav-link {
+    text-decoration: none;
+    color: vars.$color-text-light;
+    font-weight: 500;
+    transition: color vars.$transition-fast;
+
+    &:hover {
+      color: vars.$color-primary;
+    }
+
+    &--active {
+      color: vars.$color-primary;
+    }
+  }
+}

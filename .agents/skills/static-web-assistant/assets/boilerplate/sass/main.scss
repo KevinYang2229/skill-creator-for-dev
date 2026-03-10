@@ -1,0 +1,10 @@
+// main.scss — 主入口，僅負責匯入模組
+// 匯入順序：variables → reset → base → utilities → layout → components
+@use 'base/variables' as vars;
+@use 'base/reset';
+@use 'base/typography';
+@use 'utilities/mixins' as mix;
+@use 'layout/header';
+@use 'layout/footer';
+@use 'layout/grid';
+@use 'components/buttons';

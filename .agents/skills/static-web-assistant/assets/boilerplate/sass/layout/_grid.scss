@@ -1,0 +1,81 @@
+// _grid.scss — 網格系統與佈局工具
+@use '../base/variables' as vars;
+@use '../utilities/mixins' as mix;
+
+// 通用容器
+.container {
+  @include mix.container;
+}
+
+// Hero Section
+.hero {
+  padding: vars.$spacing-2xl vars.$spacing-md;
+  text-align: center;
+
+  &__container {
+    @include mix.container(800px);
+  }
+
+  &__title {
+    margin-bottom: vars.$spacing-md;
+  }
+
+  &__subtitle {
+    font-size: vars.$font-size-lg;
+    color: vars.$color-text-light;
+    margin-bottom: vars.$spacing-xl;
+  }
+}
+
+// Features Section
+.features {
+  padding: vars.$spacing-2xl vars.$spacing-md;
+  background-color: vars.$color-bg-alt;
+
+  &__container {
+    @include mix.container;
+  }
+
+  &__title {
+    text-align: center;
+    margin-bottom: vars.$spacing-xl;
+  }
+
+  &__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: vars.$spacing-lg;
+
+    @include mix.respond-to(md) {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    @include mix.respond-to(lg) {
+      grid-template-columns: repeat(3, 1fr);
+    }
+  }
+}
+
+// stylelint-disable selector-class-pattern -- feature-card 為獨立元件
+.feature-card {
+  background: vars.$color-bg;
+  padding: vars.$spacing-xl;
+  border-radius: vars.$radius-lg;
+  box-shadow: vars.$shadow-sm;
+  transition: box-shadow vars.$transition-base;
+
+  &:hover {
+    box-shadow: vars.$shadow-md;
+  }
+
+  &__title {
+    font-size: vars.$font-size-lg;
+    margin-bottom: vars.$spacing-sm;
+  }
+
+  &__description {
+    color: vars.$color-text-light;
+  }
+}
+
+// stylelint-enable selector-class-pattern

@@ -1,0 +1,71 @@
+// _buttons.scss — 按鈕元件
+@use '../base/variables' as vars;
+
+.btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: vars.$spacing-sm;
+  padding: vars.$spacing-sm vars.$spacing-lg;
+  font-size: vars.$font-size-base;
+  font-weight: 600;
+  line-height: 1;
+  border: 2px solid transparent;
+  border-radius: vars.$radius-md;
+  cursor: pointer;
+  transition: all vars.$transition-fast;
+  text-decoration: none;
+
+  &:focus-visible {
+    outline: 3px solid vars.$color-primary;
+    outline-offset: 2px;
+  }
+
+  &:disabled {
+    opacity: 0.5;
+    cursor: not-allowed;
+  }
+
+  // ========== 變體 ==========
+
+  &--primary {
+    background-color: vars.$color-primary;
+    color: #fff;
+
+    &:hover:not(:disabled) {
+      background-color: vars.$color-primary-dark;
+    }
+  }
+
+  &--secondary {
+    background-color: transparent;
+    color: vars.$color-primary;
+    border-color: vars.$color-primary;
+
+    &:hover:not(:disabled) {
+      background-color: vars.$color-primary;
+      color: #fff;
+    }
+  }
+
+  &--ghost {
+    background-color: transparent;
+    color: vars.$color-text;
+
+    &:hover:not(:disabled) {
+      background-color: vars.$color-bg-alt;
+    }
+  }
+
+  // ========== 尺寸 ==========
+
+  &--sm {
+    padding: vars.$spacing-xs vars.$spacing-md;
+    font-size: vars.$font-size-sm;
+  }
+
+  &--lg {
+    padding: vars.$spacing-md vars.$spacing-xl;
+    font-size: vars.$font-size-lg;
+  }
+}
