@@ -1,0 +1,33 @@
+<!--
+  tableList：表格式列表
+  - caption 為無障礙標題（預設隱藏），若表格複雜可加 <span class="summary">
+  - thead th 要 scope="col"
+  - 常見欄位 class：td.num / td.date 會有專用樣式
+-->
+<div class="tableList">
+  <table>
+    <caption>
+      {{TABLE_CAPTION}}
+      <!-- <span class="summary">表格摘要</span> -->
+    </caption>
+    <thead>
+      <tr>
+        <th scope="col">編號</th>
+        <th scope="col">{{COL_TITLE}}</th>
+        <th scope="col">日期</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td class="num">01</td>
+        <td><a href="#">{{ROW_TITLE_1}}</a></td>
+        <td class="date">{{DATE_1}}</td>
+      </tr>
+      <tr>
+        <td class="num">02</td>
+        <td><a href="#">{{ROW_TITLE_2}}</a></td>
+        <td class="date">{{DATE_2}}</td>
+      </tr>
+    </tbody>
+  </table>
+</div>

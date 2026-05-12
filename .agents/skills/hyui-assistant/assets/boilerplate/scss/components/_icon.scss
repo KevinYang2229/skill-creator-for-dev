@@ -1,0 +1,1081 @@
+@use 'sass:color';
+@use 'sass:math';
+@use 'sass:map';
+@use "../variable" as *; //變數
+@use "../basic/mixin" as *; //mixin
+
+.iconDemo {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+  padding: 20px;
+  color: #4a4a4a;
+
+  &.w {
+    background: #000;
+    color: #cacaca;
+
+    table {
+      td {
+        &:nth-child(odd) {
+          &:has([class^='i_']) {
+            border: 1px solid #505050;
+          }
+        }
+      }
+    }
+  }
+
+  table {
+    td {
+      &:nth-child(odd) {
+        text-align: center;
+        width: 30px;
+
+        &:has([class^='i_']) {
+          border: 1px solid #ccc;
+        }
+
+        [class^='i_'] {
+          margin: 0 auto;
+        }
+      }
+
+      &:nth-child(even) {
+        padding-left: 10px;
+      }
+    }
+  }
+}
+
+[class^='i_'] {
+  display: block;
+  height: 20px;
+  width: 20px;
+
+  &::before {
+    content: '';
+    display: block;
+    height: 20px;
+    width: 20px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+}
+
+// icon List
+
+// A
+.i_account_circle_dk {
+  &::before {
+    background-image: url('../images/basic/icon/account_circle_dk.svg');
+  }
+}
+
+.i_account_circle_w {
+  &::before {
+    background-image: url('../images/basic/icon/account_circle_w.svg');
+  }
+}
+
+.i_add_dk {
+  &::before {
+    background-image: url('../images/basic/icon/add_dk.svg');
+  }
+}
+
+.i_add_w {
+  &::before {
+    background-image: url('../images/basic/icon/add_w.svg');
+  }
+}
+
+.i_arrow_back_dk {
+  &::before {
+    background-image: url('../images/basic/icon/arrow_back_dk.svg');
+  }
+}
+
+.i_arrow_back_w {
+  &::before {
+    background-image: url('../images/basic/icon/arrow_back_w.svg');
+  }
+}
+
+.i_arrow_down_dk {
+  &::before {
+    background-image: url('../images/basic/icon/arrow_down_dk.svg');
+  }
+}
+
+.i_arrow_down_w {
+  &::before {
+    background-image: url('../images/basic/icon/arrow_down_w.svg');
+  }
+}
+
+.i_arrow_forward_dk {
+  &::before {
+    background-image: url('../images/basic/icon/arrow_forward_dk.svg');
+  }
+}
+
+.i_arrow_forward_w {
+  &::before {
+    background-image: url('../images/basic/icon/arrow_forward_w.svg');
+  }
+}
+
+.i_arrow_left_dk {
+  &::before {
+    background-image: url('../images/basic/icon/arrow_left_dk.svg');
+  }
+}
+
+.i_arrow_left_w {
+  &::before {
+    background-image: url('../images/basic/icon/arrow_left_w.svg');
+  }
+}
+
+.i_arrow_right_dk {
+  &::before {
+    background-image: url('../images/basic/icon/arrow_right_dk.svg');
+  }
+}
+
+.i_arrow_right_w {
+  &::before {
+    background-image: url('../images/basic/icon/arrow_right_w.svg');
+  }
+}
+
+.i_arrow_up_dk {
+  &::before {
+    background-image: url('../images/basic/icon/arrow_up_dk.svg');
+  }
+}
+
+.i_arrow_up_w {
+  &::before {
+    background-image: url('../images/basic/icon/arrow_up_w.svg');
+  }
+}
+
+.i_arrows_output_dk {
+  &::before {
+    background-image: url('../images/basic/icon/arrows_output_dk.svg');
+  }
+}
+
+.i_arrows_output_w {
+  &::before {
+    background-image: url('../images/basic/icon/arrows_output_w.svg');
+  }
+}
+
+.i_attach_file_dk {
+  &::before {
+    background-image: url('../images/basic/icon/attach_file_dk.svg');
+  }
+}
+
+.i_attach_file_w {
+  &::before {
+    background-image: url('../images/basic/icon/attach_file_w.svg');
+  }
+}
+
+// B
+.i_back_dk {
+  &::before {
+    background-image: url('../images/basic/icon/back_dk.svg');
+  }
+}
+
+.i_back_w {
+  &::before {
+    background-image: url('../images/basic/icon/back_w.svg');
+  }
+}
+
+.i_block_dk {
+  &::before {
+    background-image: url('../images/basic/icon/block_dk.svg');
+  }
+}
+
+.i_block_w {
+  &::before {
+    background-image: url('../images/basic/icon/block_w.svg');
+  }
+}
+
+.i_block_dk {
+  &::before {
+    background-image: url('../images/basic/icon/block_dk.svg');
+  }
+}
+
+.i_block_w {
+  &::before {
+    background-image: url('../images/basic/icon/block_w.svg');
+  }
+}
+
+.i_book_dk {
+  &::before {
+    background-image: url('../images/basic/icon/book_dk.svg');
+  }
+}
+
+.i_book_w {
+  &::before {
+    background-image: url('../images/basic/icon/book_w.svg');
+  }
+}
+
+.i_browse_dk {
+  &::before {
+    background-image: url('../images/basic/icon/browse_dk.svg');
+  }
+}
+
+.i_browse_w {
+  &::before {
+    background-image: url('../images/basic/icon/browse_w.svg');
+  }
+}
+
+// C
+
+.i_calendar_1_dk {
+  &::before {
+    background-image: url('../images/basic/icon/calendar_1_dk.svg');
+  }
+}
+
+.i_calendar_1_w {
+  &::before {
+    background-image: url('../images/basic/icon/calendar_1_w.svg');
+  }
+}
+
+.i_calendar_2_dk {
+  &::before {
+    background-image: url('../images/basic/icon/calendar_2_dk.svg');
+  }
+}
+
+.i_calendar_2_w {
+  &::before {
+    background-image: url('../images/basic/icon/calendar_2_w.svg');
+  }
+}
+
+.i_call_made_dk {
+  &::before {
+    background-image: url('../images/basic/icon/call_made_dk.svg');
+  }
+}
+
+.i_call_made_w {
+  &::before {
+    background-image: url('../images/basic/icon/call_made_w.svg');
+  }
+}
+
+.i_call_received_dk {
+  &::before {
+    background-image: url('../images/basic/icon/call_received_dk.svg');
+  }
+}
+
+.i_call_received_w {
+  &::before {
+    background-image: url('../images/basic/icon/call_received_w.svg');
+  }
+}
+
+.i_cancel_dk {
+  &::before {
+    background-image: url('../images/basic/icon/cancel_dk.svg');
+  }
+}
+
+.i_cancel_w {
+  &::before {
+    background-image: url('../images/basic/icon/cancel_w.svg');
+  }
+}
+
+.i_cancel {
+  &::before {
+    background-image: url('../images/basic/icon/cancel.svg');
+  }
+}
+
+.i_check_circle_dk {
+  &::before {
+    background-image: url('../images/basic/icon/check_circle_dk.svg');
+  }
+}
+
+.i_check_circle_w {
+  &::before {
+    background-image: url('../images/basic/icon/check_circle_w.svg');
+  }
+}
+
+.i_check_circle {
+  &::before {
+    background-image: url('../images/basic/icon/check_circle.svg');
+  }
+}
+
+.i_check_dk {
+  &::before {
+    background-image: url('../images/basic/icon/check_dk.svg');
+  }
+}
+
+.i_check_w {
+  &::before {
+    background-image: url('../images/basic/icon/check_w.svg');
+  }
+}
+
+.i_clock_dk {
+  &::before {
+    background-image: url('../images/basic/icon/clock_dk.svg');
+  }
+}
+
+.i_clock_w {
+  &::before {
+    background-image: url('../images/basic/icon/clock_w.svg');
+  }
+}
+
+.i_close_dk {
+  &::before {
+    background-image: url('../images/basic/icon/close_dk.svg');
+  }
+}
+
+.i_close_w {
+  &::before {
+    background-image: url('../images/basic/icon/close_w.svg');
+  }
+}
+
+.i_cloud_download_dk {
+  &::before {
+    background-image: url('../images/basic/icon/cloud_download_dk.svg');
+  }
+}
+
+.i_cloud_download_w {
+  &::before {
+    background-image: url('../images/basic/icon/cloud_download_w.svg');
+  }
+}
+
+.i_cloud_upload_dk {
+  &::before {
+    background-image: url('../images/basic/icon/cloud_upload_dk.svg');
+  }
+}
+
+.i_cloud_upload_w {
+  &::before {
+    background-image: url('../images/basic/icon/cloud_upload_w.svg');
+  }
+}
+
+.i_contrast_dk {
+  &::before {
+    background-image: url('../images/basic/icon/contrast_dk.svg');
+  }
+}
+
+.i_contrast_w {
+  &::before {
+    background-image: url('../images/basic/icon/contrast_w.svg');
+  }
+}
+
+// D
+.i_database_dk {
+  &::before {
+    background-image: url('../images/basic/icon/database_dk.svg');
+  }
+}
+
+.i_database_w {
+  &::before {
+    background-image: url('../images/basic/icon/database_w.svg');
+  }
+}
+
+.i_delete_dk {
+  &::before {
+    background-image: url('../images/basic/icon/delete_dk.svg');
+  }
+}
+
+.i_delete_w {
+  &::before {
+    background-image: url('../images/basic/icon/delete_w.svg');
+  }
+}
+
+.i_description_dk {
+  &::before {
+    background-image: url('../images/basic/icon/description_dk.svg');
+  }
+}
+
+.i_description_w {
+  &::before {
+    background-image: url('../images/basic/icon/description_w.svg');
+  }
+}
+
+.i_desktop_landscape_dk {
+  &::before {
+    background-image: url('../images/basic/icon/desktop_landscape_dk.svg');
+  }
+}
+
+.i_desktop_landscape_w {
+  &::before {
+    background-image: url('../images/basic/icon/desktop_landscape_w.svg');
+  }
+}
+
+.i_developer_guide_dk {
+  &::before {
+    background-image: url('../images/basic/icon/developer_guide_dk.svg');
+  }
+}
+
+.i_developer_guide_w {
+  &::before {
+    background-image: url('../images/basic/icon/developer_guide_w.svg');
+  }
+}
+
+.i_distance_dk {
+  &::before {
+    background-image: url('../images/basic/icon/distance_dk.svg');
+  }
+}
+
+.i_distance_w {
+  &::before {
+    background-image: url('../images/basic/icon/distance_w.svg');
+  }
+}
+
+.i_download_dk {
+  &::before {
+    background-image: url('../images/basic/icon/download_dk.svg');
+  }
+}
+
+.i_download_w {
+  &::before {
+    background-image: url('../images/basic/icon/download_w.svg');
+  }
+}
+
+// E
+
+.i_edit_dk {
+  &::before {
+    background-image: url('../images/basic/icon/edit_dk.svg');
+  }
+}
+
+.i_edit_w {
+  &::before {
+    background-image: url('../images/basic/icon/edit_w.svg');
+  }
+}
+
+.i_error_dk {
+  &::before {
+    background-image: url('../images/basic/icon/error_dk.svg');
+  }
+}
+
+.i_error_w {
+  &::before {
+    background-image: url('../images/basic/icon/error_w.svg');
+  }
+}
+
+.i_expand_all_dk {
+  &::before {
+    background-image: url('../images/basic/icon/expand_all_dk.svg');
+  }
+}
+
+.i_expand_all_w {
+  &::before {
+    background-image: url('../images/basic/icon/expand_all_w.svg');
+  }
+}
+
+// F
+
+.i_favorite_dk {
+  &::before {
+    background-image: url('../images/basic/icon/favorite_dk.svg');
+  }
+}
+
+.i_favorite_w {
+  &::before {
+    background-image: url('../images/basic/icon/favorite_w.svg');
+  }
+}
+
+.i_first_page_dk {
+  &::before {
+    background-image: url('../images/basic/icon/first_page_dk.svg');
+  }
+}
+
+.i_first_page_w {
+  &::before {
+    background-image: url('../images/basic/icon/first_page_w.svg');
+  }
+}
+
+.i_folder_dk {
+  &::before {
+    background-image: url('../images/basic/icon/folder_dk.svg');
+  }
+}
+
+.i_folder_w {
+  &::before {
+    background-image: url('../images/basic/icon/folder_w.svg');
+  }
+}
+
+.i_format_size_dk {
+  &::before {
+    background-image: url('../images/basic/icon/format_size_dk.svg');
+  }
+}
+
+.i_format_size_w {
+  &::before {
+    background-image: url('../images/basic/icon/format_size_w.svg');
+  }
+}
+
+// H
+
+.i_help_dk {
+  &::before {
+    background-image: url('../images/basic/icon/help_dk.svg');
+  }
+}
+
+.i_help_w {
+  &::before {
+    background-image: url('../images/basic/icon/help_w.svg');
+  }
+}
+
+.i_home_dk {
+  &::before {
+    background-image: url('../images/basic/icon/home_dk.svg');
+  }
+}
+
+.i_home_w {
+  &::before {
+    background-image: url('../images/basic/icon/home_w.svg');
+  }
+}
+
+// I
+
+.i_image_dk {
+  &::before {
+    background-image: url('../images/basic/icon/image_dk.svg');
+  }
+}
+
+.i_image_w {
+  &::before {
+    background-image: url('../images/basic/icon/image_w.svg');
+  }
+}
+
+.i_info_dk {
+  &::before {
+    background-image: url('../images/basic/icon/info_dk.svg');
+  }
+}
+
+.i_info_w {
+  &::before {
+    background-image: url('../images/basic/icon/info_w.svg');
+  }
+}
+
+.i_info {
+  &::before {
+    background-image: url('../images/basic/icon/info.svg');
+  }
+}
+
+// K
+
+.i_key_vertical_dk {
+  &::before {
+    background-image: url('../images/basic/icon/key_vertical_dk.svg');
+  }
+}
+
+.i_key_vertical_w {
+  &::before {
+    background-image: url('../images/basic/icon/key_vertical_w.svg');
+  }
+}
+
+// L
+.i_language_dk {
+  &::before {
+    background-image: url('../images/basic/icon/language_dk.svg');
+  }
+}
+
+.i_language_w {
+  &::before {
+    background-image: url('../images/basic/icon/language_w.svg');
+  }
+}
+
+.i_language {
+  &::before {
+    background-image: url('../images/basic/icon/language.svg');
+  }
+}
+
+.i_last_page_dk {
+  &::before {
+    background-image: url('../images/basic/icon/last_page_dk.svg');
+  }
+}
+
+.i_last_page_w {
+  &::before {
+    background-image: url('../images/basic/icon/last_page_w.svg');
+  }
+}
+
+.i_leaderboard_dk {
+  &::before {
+    background-image: url('../images/basic/icon/leaderboard_dk.svg');
+  }
+}
+
+.i_leaderboard_w {
+  &::before {
+    background-image: url('../images/basic/icon/leaderboard_w.svg');
+  }
+}
+
+.i_list_dk {
+  &::before {
+    background-image: url('../images/basic/icon/list_dk.svg');
+  }
+}
+
+.i_list_w {
+  &::before {
+    background-image: url('../images/basic/icon/list_w.svg');
+  }
+}
+
+.i_lock_dk {
+  &::before {
+    background-image: url('../images/basic/icon/lock_dk.svg');
+  }
+}
+
+.i_lock_w {
+  &::before {
+    background-image: url('../images/basic/icon/lock_w.svg');
+  }
+}
+
+.i_logout_dk {
+  &::before {
+    background-image: url('../images/basic/icon/logout_dk.svg');
+  }
+}
+
+.i_logout_w {
+  &::before {
+    background-image: url('../images/basic/icon/logout_w.svg');
+  }
+}
+
+// M
+.i_mail_dk {
+  &::before {
+    background-image: url('../images/basic/icon/mail_dk.svg');
+  }
+}
+
+.i_mail_w {
+  &::before {
+    background-image: url('../images/basic/icon/mail_w.svg');
+  }
+}
+
+.i_menu_dk {
+  &::before {
+    background-image: url('../images/basic/icon/menu_dk.svg');
+  }
+}
+
+.i_menu_w {
+  &::before {
+    background-image: url('../images/basic/icon/menu_w.svg');
+  }
+}
+
+.i_more_vert_dk {
+  &::before {
+    background-image: url('../images/basic/icon/more_vert_dk.svg');
+  }
+}
+
+.i_more_vert_w {
+  &::before {
+    background-image: url('../images/basic/icon/more_vert_w.svg');
+  }
+}
+
+// N
+.i_new_releases_dk {
+  &::before {
+    background-image: url('../images/basic/icon/new_releases_dk.svg');
+  }
+}
+
+.i_new_releases_w {
+  &::before {
+    background-image: url('../images/basic/icon/new_releases_w.svg');
+  }
+}
+
+.i_notifications_dk {
+  &::before {
+    background-image: url('../images/basic/icon/notifications_dk.svg');
+  }
+}
+
+.i_notifications_w {
+  &::before {
+    background-image: url('../images/basic/icon/notifications_w.svg');
+  }
+}
+
+// O
+.i_open_in_new_dk {
+  &::before {
+    background-image: url('../images/basic/icon/open_in_new_dk.svg');
+  }
+}
+
+.i_open_in_new_w {
+  &::before {
+    background-image: url('../images/basic/icon/open_in_new_w.svg');
+  }
+}
+
+// P
+.i_palette_dk {
+  &::before {
+    background-image: url('../images/basic/icon/palette_dk.svg');
+  }
+}
+
+.i_palette_w {
+  &::before {
+    background-image: url('../images/basic/icon/palette_w.svg');
+  }
+}
+
+.i_pause_dk {
+  &::before {
+    background-image: url('../images/basic/icon/pause_dk.svg');
+  }
+}
+
+.i_pause_w {
+  &::before {
+    background-image: url('../images/basic/icon/pause_w.svg');
+  }
+}
+
+.i_person_dk {
+  &::before {
+    background-image: url('../images/basic/icon/person_dk.svg');
+  }
+}
+
+.i_person_w {
+  &::before {
+    background-image: url('../images/basic/icon/person_w.svg');
+  }
+}
+
+.i_play_arrow_dk {
+  &::before {
+    background-image: url('../images/basic/icon/play_arrow_dk.svg');
+  }
+}
+
+.i_play_arrow_w {
+  &::before {
+    background-image: url('../images/basic/icon/play_arrow_w.svg');
+  }
+}
+
+.i_print_dk {
+  &::before {
+    background-image: url('../images/basic/icon/print_dk.svg');
+  }
+}
+
+.i_print_w {
+  &::before {
+    background-image: url('../images/basic/icon/print_w.svg');
+  }
+}
+
+// R
+.i_refresh_dk {
+  &::before {
+    background-image: url('../images/basic/icon/refresh_dk.svg');
+  }
+}
+
+.i_refresh_w {
+  &::before {
+    background-image: url('../images/basic/icon/refresh_w.svg');
+  }
+}
+
+.i_remove_dk {
+  &::before {
+    background-image: url('../images/basic/icon/remove_dk.svg');
+  }
+}
+
+.i_remove_w {
+  &::before {
+    background-image: url('../images/basic/icon/remove_w.svg');
+  }
+}
+
+// S
+.i_search_dk {
+  &::before {
+    background-image: url('../images/basic/icon/search_dk.svg');
+  }
+}
+
+.i_search_w {
+  &::before {
+    background-image: url('../images/basic/icon/search_w.svg');
+  }
+}
+
+.i_select_arrow_dk {
+  &::before {
+    background-image: url('../images/basic/icon/select_arrow_dk.svg');
+  }
+}
+
+.i_select_arrow_w {
+  &::before {
+    background-image: url('../images/basic/icon/select_arrow_w.svg');
+  }
+}
+
+.i_settings_dk {
+  &::before {
+    background-image: url('../images/basic/icon/settings_dk.svg');
+  }
+}
+
+.i_settings_w {
+  &::before {
+    background-image: url('../images/basic/icon/settings_w.svg');
+  }
+}
+
+.i_share_dk {
+  &::before {
+    background-image: url('../images/basic/icon/share_dk.svg');
+  }
+}
+
+.i_share_w {
+  &::before {
+    background-image: url('../images/basic/icon/share_w.svg');
+  }
+}
+
+.i_slash_dk {
+  &::before {
+    background-image: url('../images/basic/icon/slash_dk.svg');
+  }
+}
+
+.i_slash_w {
+  &::before {
+    background-image: url('../images/basic/icon/slash_w.svg');
+  }
+}
+
+.i_star_dk {
+  &::before {
+    background-image: url('../images/basic/icon/star_dk.svg');
+  }
+}
+
+.i_star_w {
+  &::before {
+    background-image: url('../images/basic/icon/star_w.svg');
+  }
+}
+
+.i_swap_vert_dk {
+  &::before {
+    background-image: url('../images/basic/icon/swap_vert_dk.svg');
+  }
+}
+
+.i_swap_vert_w {
+  &::before {
+    background-image: url('../images/basic/icon/swap_vert_w.svg');
+  }
+}
+
+.i_sync_dk {
+  &::before {
+    background-image: url('../images/basic/icon/sync_dk.svg');
+  }
+}
+
+.i_sync_w {
+  &::before {
+    background-image: url('../images/basic/icon/sync_w.svg');
+  }
+}
+
+// T
+.i_tag_dk {
+  &::before {
+    background-image: url('../images/basic/icon/tag_dk.svg');
+  }
+}
+
+.i_tag_w {
+  &::before {
+    background-image: url('../images/basic/icon/tag_w.svg');
+  }
+}
+
+.i_tooltip_dk {
+  &::before {
+    background-image: url('../images/basic/icon/info_dk.svg');
+  }
+}
+
+.i_tooltip_w {
+  &::before {
+    background-image: url('../images/basic/icon/info_w.svg');
+  }
+}
+
+// U
+.i_upload_dk {
+  &::before {
+    background-image: url('../images/basic/icon/upload_dk.svg');
+  }
+}
+
+.i_upload_w {
+  &::before {
+    background-image: url('../images/basic/icon/upload_w.svg');
+  }
+}
+
+.i_visibility_dk {
+  &::before {
+    background-image: url('../images/basic/icon/visibility_dk.svg');
+  }
+}
+
+.i_visibility_w {
+  &::before {
+    background-image: url('../images/basic/icon/visibility_w.svg');
+  }
+}
+
+.i_visibility_off_dk {
+  &::before {
+    background-image: url('../images/basic/icon/visibility_off_dk.svg');
+  }
+}
+
+.i_visibility_off_w {
+  &::before {
+    background-image: url('../images/basic/icon/visibility_off_w.svg');
+  }
+}
+
+.i_voice_dk {
+  &::before {
+    background-image: url('../images/basic/icon/voice_dk.svg');
+  }
+}
+
+.i_voice_w {
+  &::before {
+    background-image: url('../images/basic/icon/voice_w.svg');
+  }
+}
+
+.i_warning_dk {
+  &::before {
+    background-image: url('../images/basic/icon/warning_dk.svg');
+  }
+}
+
+.i_warning_w {
+  &::before {
+    background-image: url('../images/basic/icon/warning_w.svg');
+  }
+}
+
+.i_warning {
+  &::before {
+    background-image: url('../images/basic/icon/warning.svg');
+  }
+}

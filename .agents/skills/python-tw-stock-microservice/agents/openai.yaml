@@ -1,0 +1,4 @@
+interface:
+  display_name: "Python 台股微服務建立器"
+  short_description: "建立台股分析 Python FastAPI 微服務專案"
+  default_prompt: "Use $python-tw-stock-microservice to scaffold a new Taiwan stock analysis FastAPI microservice project."

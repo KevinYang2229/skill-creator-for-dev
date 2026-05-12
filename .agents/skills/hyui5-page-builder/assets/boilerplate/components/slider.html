@@ -1,0 +1,33 @@
+<!--
+  slider：swiper 輪播
+  變體：
+    - mpSlider  首頁主視覺（帶 autoPlaySwitch、swiperPagination）
+    - adSlider  多張小卡片（多張同時顯示）
+  依賴：swiper-bundle.min.js / swiper-bundle.min.css
+  初始化：於 js/customize.js 使用 new Swiper('.selector', {...})
+-->
+
+<!-- 主視覺 -->
+<div class="mpSlider">
+  <!-- 無障礙：需放置自動播放開關 -->
+  <button type="button" class="autoPlaySwitch" data-info-play="暫停中，點我播放" data-info-stop="播放中，點我暫停" aria-label="播放中，點我暫停"></button>
+  <div class="swiperBox">
+    <button type="button" class="swiperPrev swiperArrow">上一筆</button>
+    <div class="swiper">
+      <div class="swiper-wrapper">
+        <div class="swiper-slide">
+          <a href="#">
+            <div class="pic"><img src="images/demo/banner.png" alt="第1張圖說" /></div>
+          </a>
+        </div>
+        <div class="swiper-slide">
+          <a href="#">
+            <div class="pic"><img src="images/demo/banner.png" alt="第2張圖說" /></div>
+          </a>
+        </div>
+      </div>
+    </div>
+    <button type="button" class="swiperNext swiperArrow">下一筆</button>
+  </div>
+  <div class="swiperPagination"></div>
+</div>

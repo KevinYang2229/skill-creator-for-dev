@@ -1,0 +1,124 @@
+@use 'sass:color';
+@use 'sass:math';
+@use 'sass:map';
+@use "../variable" as *; //變數
+@use "../basic/mixin" as *; //mixin
+
+// footer
+footer {
+  width: 100%;
+  color: $colorWord;
+  position: relative;
+
+  a {
+    text-decoration: none;
+  }
+
+  padding: 28px 0;
+
+  .container {
+
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+
+
+    @include screen('tablet') {
+      flex-direction: column;
+    }
+  }
+
+  .infoBox {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    gap: 13px;
+  }
+
+  .footerLogo {
+    margin: 0 0 10px;
+
+
+    a {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      color: $colorPrimary;
+      font-weight: 900;
+      font-size: Rem(40);
+
+      @include screen('tablet') {
+        height: 60px;
+      }
+    }
+
+    span {
+      font-size: Rem(20);
+      margin-top: 13px;
+      margin-left: -13px;
+      font-weight: 600;
+    }
+
+    img {
+      width: 47px;
+      height: 47px;
+    }
+  }
+
+  .copyright {
+    font-size: Rem(15);
+    margin: 0 0 12px;
+  }
+
+  .footerLink {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+    @include liReset;
+    font-size: Rem(15);
+
+    li {
+      @include screen('tablet') {
+        flex-grow: 1;
+        width: 100%;
+
+        a {
+          width: 100%;
+        }
+      }
+    }
+  }
+
+  .footerInfo {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    @include liReset;
+    font-size: Rem(15);
+  }
+
+  .footerIcon {
+    display: flex;
+    gap: 12px;
+    justify-content: flex-end;
+
+    @include screen('tablet') {
+      justify-content: flex-start;
+    }
+
+    img {
+      height: 52px;
+    }
+  }
+
+  .footerInfo2 {
+    display: flex;
+    gap: 20px;
+
+    span {
+      color: $colorPrimary;
+      display: inline-block;
+      margin-left: 10px;
+    }
+  }
+}

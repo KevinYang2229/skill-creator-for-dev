@@ -1,0 +1,111 @@
+@use 'sass:color';
+@use 'sass:math';
+@use 'sass:map';
+@use "../variable" as *; //變數
+@use "../basic/mixin" as *; //mixin
+
+.accordion {
+  list-style: none;
+  padding: 0;
+
+  .accordionList {
+    margin-bottom: 0.5em;
+
+    .accordionBtn {
+      width: 100%;
+      position: relative;
+      padding: 0 16px 0 0;
+      font-size: Rem(18);
+      border-radius: var(--borderRadius4);
+      background: #fff;
+      box-shadow: 0px 2px 6px 0px rgba(38, 43, 67, 0.20);
+      overflow: hidden;
+      text-align: left;
+      display: flex;
+      align-items: center;
+      justify-content: flex-start;
+      gap: 16px;
+      font-weight: 500;
+      line-height: 1.4;
+      white-space: unset;
+
+      &::before {
+        content: 'Q';
+        align-self: stretch;
+        background: $colorPrimary;
+        padding: 6px 18px;
+        color: #fff;
+        font-size: Rem(28);
+        font-weight: 600;
+        display: flex;
+        align-items: center;
+      }
+
+      & > span {
+        word-break: break-all;
+        margin: 12px 0;
+        flex-grow: 1;
+        @include lineClamp(2);
+      }
+    }
+
+    &.active {
+      .accordionState {
+        &::after {
+          margin-top: 3px;
+          transform: rotate(-135deg);
+        }
+      }
+    }
+  }
+
+
+  .accordionContent {
+    overflow: hidden;
+
+    &.hidden {
+      display: none;
+    }
+
+    .content {
+      padding: 10px 0;
+    }
+  }
+
+  .accordionState {
+    margin-left: 10px;
+    padding: 4px 16px;
+    border-radius: var(--borderRadius4);
+    background: #DEE0E3;
+    align-self: flex-start;
+    white-space: nowrap;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 12px 0 0 auto;
+    color: #333;
+    font-size: Rem(14);
+    flex-shrink: 0;
+
+    @include screen('mobile') {
+      padding: 10px;
+      aspect-ratio: 1;
+
+      span {
+        display: none;
+      }
+    }
+
+    &:after {
+      content: '';
+      border: 1.5px solid #555555;
+      border-top: none;
+      border-left: none;
+      display: block;
+      width: 6px;
+      height: 6px;
+      margin-top: -2px;
+      transform: rotate(45deg);
+    }
+  }
+}

@@ -1,0 +1,202 @@
+@use 'sass:color';
+@use 'sass:math';
+@use 'sass:map';
+@use "../variable" as *; //變數
+@use "../basic/mixin" as *; //mixin
+
+.fileDownloadBox {
+  & > ul {
+    border-top: #97A3B6 3px solid;
+    border-bottom: #97A3B6 3px solid;
+    @include liReset;
+    margin-bottom: 30px;
+
+    & > li {
+      padding: 12px 8px;
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 40px;
+      color: #000;
+
+      @include screen('mobile') {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 20px;
+      }
+
+      &:not(:last-child) {
+        border-bottom: #DEE0E3 1px solid;
+      }
+    }
+  }
+
+  .downloadFiles {
+    max-width: 70%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    @include liReset;
+    gap: 10px 20px;
+
+    @include screen('mobile') {
+      max-width: none;
+      justify-content: flex-start;
+    }
+
+    li {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      line-height: 1.2;
+    }
+
+    a {
+      display: block;
+      margin: 0;
+      padding: 0;
+      width: 2rem;
+      height: 2.5rem;
+      text-decoration: none;
+      position: relative;
+      padding: 5px;
+      isolation: isolate;
+      color: $colorWordLight;
+      filter: drop-shadow(0 2px 1px rgba(#000, 0));
+
+      &::before {
+        content: '';
+        position: absolute;
+        inset: 0;
+        background-color: #D9D9D9;
+        clip-path: polygon(0% 5px, 1px 2.5px, 2.5px 1px, 5px 0%, calc(100% - 10px) 0%, 100% 10px, 100% calc(100% - 5px),
+            calc(100% - 1px) calc(100% - 2.5px),
+            calc(100% - 2px) calc(100% - 1px), calc(100% - 5px) 100%, 5px 100%, 2.5px calc(100% - 1px), 1px calc(100% - 2px), 0% calc(100% - 5px));
+      }
+
+      &::after {
+        content: '';
+        width: 0;
+        height: 0;
+        border-style: solid;
+        border-width: 0 11px 11px 0;
+        border-color: transparent transparent #b1b7bc;
+        border-radius: 2px;
+        position: absolute;
+        top: -0.5px;
+        right: -0.5px;
+      }
+
+      &:focus-visible {
+        outline-offset: 2px
+      }
+
+      &:hover {
+        filter: drop-shadow(0 2px 1px rgba(#000, 0.3));
+
+        .fileType {
+
+          &.blue {
+            box-shadow: rgba(#fff, 0.6) 0 0 0 1px inset, rgba(#275CB7, 1) 0 0 0 2px;
+          }
+
+          &.green {
+            box-shadow: rgba(#fff, 0.6) 0 0 0 1px inset, rgba(#387947, 1) 0 0 0 2px;
+          }
+
+          &.brown {
+            box-shadow: rgba(#fff, 0.6) 0 0 0 1px inset, rgba(#C55A3B, 1) 0 0 0 2px;
+          }
+
+          &.purple {
+            box-shadow: rgba(#fff, 0.6) 0 0 0 1px inset, rgba(#6C29A4, 1) 0 0 0 2px;
+          }
+
+          &.orange {
+            box-shadow: rgba(#fff, 0.6) 0 0 0 1px inset, rgba(#EB712E, 1) 0 0 0 2px;
+          }
+
+          &.gray {
+            box-shadow: rgba(#fff, 0.6) 0 0 0 1px inset, rgba(#555555, 1) 0 0 0 2px;
+          }
+
+          &.cyan {
+            box-shadow: rgba(#fff, 0.6) 0 0 0 1px inset, rgba(#009999, 1) 0 0 0 2px;
+          }
+
+          &.cerulean {
+            box-shadow: rgba(#fff, 0.6) 0 0 0 1px inset, rgba(#088ECC, 1) 0 0 0 2px;
+          }
+
+          &.red {
+            box-shadow: rgba(#fff, 0.6) 0 0 0 1px inset, rgba(#e20000, 1) 0 0 0 2px;
+          }
+        }
+      }
+    }
+
+    .fileType {
+      vertical-align: middle;
+      position: absolute;
+      top: 16px;
+      right: 4px;
+      min-width: Rem(34);
+      height: 18px;
+      width: fit-content;
+      padding: 0 3px 2px;
+      line-height: 1;
+      font-size: Rem(12);
+      text-decoration: none;
+      text-align: left;
+      color: #fff;
+      border-radius: var(--borderRadius4);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: rgba(#fff, 0) 0 0 0 1px inset, rgba(#fff, 0) 0 0 0 2px;
+      @include transition(0.3);
+
+      &.blue {
+        background: #275CB7;
+      }
+
+      &.green {
+        background: #387947;
+      }
+
+      &.brown {
+        background: #C55A3B;
+      }
+
+      &.purple {
+        background: #6C29A4;
+      }
+
+      &.orange {
+        background: #EB712E;
+      }
+
+      &.gray {
+        background: #555555;
+      }
+
+      &.cyan {
+        background: #009999;
+      }
+
+      &.cerulean {
+        background: #088ECC;
+      }
+
+      &.red {
+        background: #e20000;
+      }
+    }
+
+    .fileSize {
+      font-size: Rem(13);
+      color: $colorWordLight;
+    }
+  }
+}

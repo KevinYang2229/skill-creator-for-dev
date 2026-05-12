@@ -1,0 +1,67 @@
+@use 'sass:color';
+@use 'sass:math';
+@use 'sass:map';
+@use "../variable" as *; //變數
+@use "../basic/mixin" as *; //mixin
+
+// 分享
+.shareBox {
+  width: fit-content;
+  position: relative;
+
+  .share {
+    color: transparent !important;
+
+    &::before {
+      content: '';
+      background-image: url('../images/basic/icon/share_dk.svg');
+    }
+  }
+
+  .shareBoxList {
+    padding: 5px;
+    display: none;
+    position: absolute;
+    top: calc(100% + 5px);
+    left: 50%;
+    transform: translateX(-50%);
+    background: #fff;
+    border-radius: 50px;
+    box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+    width: 42px;
+    overflow: hidden;
+    z-index: 5;
+
+    ul {
+      flex-direction: column;
+    }
+  }
+
+  ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    @include liReset;
+
+    li {
+      line-height: 0;
+    }
+
+    a {
+      display: block;
+      line-height: 0;
+      border-radius: 50%;
+      @include transition(0.3);
+
+      &:hover {
+        transform: translate(-2px, -2px);
+        filter: drop-shadow(2px 2px 4px rgba(0, 0, 0, 0.2));
+      }
+    }
+
+    img {
+      width: 32px;
+      aspect-ratio: 1;
+    }
+  }
+}

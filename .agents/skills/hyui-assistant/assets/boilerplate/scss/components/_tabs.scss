@@ -1,0 +1,87 @@
+@use 'sass:color';
+@use 'sass:math';
+@use 'sass:map';
+@use "../variable" as *; //變數
+@use "../basic/mixin" as *; //mixin
+
+.tabSet {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+
+  .tabBtnBox {
+    overflow-x: auto;
+    display: flex;
+    padding-bottom: 5px;
+  }
+
+  .tabItems {
+    // min-width: 100%;
+    display: flex;
+    gap: 10px;
+    padding: 4px 0;
+    flex-shrink: 0;
+    justify-content: center;
+  }
+
+  .tabBtn {
+    display: block;
+    position: relative;
+    background: #DEE0E3;
+    border-radius: 50px;
+    color: #111;
+    padding: 12px 40px;
+    flex-shrink: 0;
+
+    & > * {
+      pointer-events: none; // 解決tab無法點擊的問題
+    }
+
+    &.active {
+      color: #fff;
+      background: #0156A2;
+    }
+  }
+
+  .tabContentGroup {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+  }
+
+  .mobileTabBtn {
+    width: 100%;
+    background: $btnPrimary;
+    color: #fff;
+    text-align: left;
+    position: relative;
+    @include transition(0.3);
+    padding-right: 40px;
+
+    &::after {
+      content: '';
+      width: 10px;
+      height: 10px;
+      border-bottom: 2px solid #fff;
+      border-right: 2px solid #fff;
+      transform: rotate(45deg);
+      position: absolute;
+      top: 50%;
+      right: 16px;
+      margin-top: -7px;
+      @include transition(0.3);
+    }
+
+    &.active {
+      &::after {
+        transform: rotate(-135deg);
+        margin-top: -2px;
+      }
+    }
+
+    &.active,
+    &:hover {
+      background: $btnPrimaryHover;
+    }
+  }
+}

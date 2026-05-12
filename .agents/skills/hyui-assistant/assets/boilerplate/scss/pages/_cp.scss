@@ -1,0 +1,93 @@
+@use 'sass:color';
+@use 'sass:math';
+@use 'sass:map';
+@use "../variable" as *; //變數
+@use "../basic/mixin" as *; //mixin
+
+.contentGroup {
+  color: #111;
+  font-size: Rem(18);
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.contentInfo {
+  background: #DEE0E3;
+  color: $colorWord;
+  border-left: $colorSecondary 5px solid;
+  padding: 32px;
+}
+
+.pageInfo {
+  ul {
+    display: flex;
+    gap: 16px 32px;
+    flex-wrap: wrap;
+    border-radius: var(--borderRadius8);
+    border: 1px solid #DEE0E3;
+    background: #fff;
+    color: $colorWordLight;
+    @include liReset;
+    padding: 16px 24px;
+
+    span {
+      color: $colorWord;
+    }
+  }
+
+  li {
+    width: itemWidth(32, 3);
+
+    @include screen('tablet') {
+      width: itemWidth(32, 2);
+    }
+
+    @include screen('xsMobile') {
+      width: 100%;
+    }
+  }
+}
+
+.contentLinkBox {
+  & > ul {
+    border-top: #97A3B6 3px solid;
+    border-bottom: #97A3B6 3px solid;
+    @include liReset;
+
+    li {
+      padding: 12px 8px 12px 25px;
+      position: relative;
+
+      &:not(:last-child) {
+        border-bottom: #DEE0E3 1px solid;
+      }
+
+      &::before {
+        content: '';
+        width: 3px;
+        height: 12px;
+        background: #69707D;
+        display: block;
+        position: absolute;
+        left: 8px;
+        top: 25px;
+      }
+
+      a {
+        text-decoration: none;
+
+        &:not(:hover) {
+          color: $colorWord;
+        }
+      }
+    }
+  }
+}
+
+.callout {
+  display: block;
+  padding: 32px;
+  border-left: 5px solid $colorSecondary;
+  background: #DEE0E3;
+}

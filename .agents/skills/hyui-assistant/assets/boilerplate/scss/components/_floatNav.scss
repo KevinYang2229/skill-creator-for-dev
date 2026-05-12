@@ -1,0 +1,130 @@
+@use 'sass:color';
+@use 'sass:math';
+@use 'sass:map';
+@use "../variable" as *; //變數
+@use "../basic/mixin" as *; //mixin
+
+.floatNav {
+  position: fixed;
+  right: 22px;
+  bottom: 20%;
+  z-index: 50;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  @include screen('tablet') {
+    right: 10px;
+  }
+
+  ul.typeA {
+    @include liReset;
+    display: none;
+
+    li {
+      line-height: 0;
+
+      & + li {
+        margin-top: 10px;
+      }
+    }
+
+    a {
+      display: block;
+      line-height: 0;
+      width: 44px;
+      height: 44px;
+      border-radius: 50%;
+      @include transition(0.3);
+
+      @include screen('tablet') {
+        width: 40px;
+        height: 40px;
+      }
+
+      img {
+        width: 100%;
+        aspect-ratio: 1;
+      }
+    }
+  }
+
+  .floatSwitchBtn {
+    width: 44px;
+    height: 44px;
+    border-radius: 50%;
+    padding: 0;
+    margin: 0;
+    background: #111;
+    position: relative;
+    @include transition(0.3);
+
+    @include screen('tablet') {
+      width: 40px;
+      height: 40px;
+    }
+
+    &.active {
+      transform: rotate(45deg);
+      background: $colorSecondary;
+    }
+
+    &::before,
+    &::after {
+      content: '';
+      position: absolute;
+      width: 2px;
+      height: 20px;
+      background: #fff;
+      transform: translate(-50%, -50%);
+      transform-origin: center;
+      left: 50%;
+      top: 50%;
+    }
+
+    &::after {
+      width: 20px;
+      height: 2px;
+    }
+  }
+
+  ul.typeB {
+    @include liReset;
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+    position: absolute;
+    left: calc(100% - 20px);
+    width: 160px;
+
+    a {
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      background: $colorPrimary;
+      color: #fff;
+      text-decoration: none;
+      padding: 10px 10px;
+      border-radius: var(--borderRadius8) 0 0 var(--borderRadius8);
+      font-size: Rem(14);
+      line-height: 1.5;
+
+      &:hover {
+        transform: translateX(calc(-100% + 42px));
+        background: $colorPrimaryDark;
+      }
+    }
+
+    .pic {
+      width: 25px;
+      aspect-ratio: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+
+      img {
+        object-fit: contain;
+      }
+    }
+  }
+}

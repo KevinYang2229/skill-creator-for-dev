@@ -1,0 +1,67 @@
+<!--
+  HyUI5 內容頁（cp）骨架：一篇文章的詳細內容
+  - innerPage > container > mainContentBox
+  - 若需要 sideNav，改用 np-shell 或在 .innerPage .container 內加入 <aside class="sideNav"> 後，mainContentBox 會自動並排
+  - 內容區 class="mainContent"，段落圖文用 .flexTpl_5_7 / .flexTpl_7_5 / .flexTpl_6_6 等
+-->
+<body>
+  <div class="wrapper">
+    <a class="goCenter" href="#aC">按Enter到主內容區</a>
+    <!-- 引用 header -->
+
+    <main>
+      <a class="accessKeyItem" href="#aC" id="aC" accesskey="C" aria-label="主要內容區">:::</a>
+      <div class="innerPage">
+        <div class="container">
+          <!-- 主內容區 -->
+          <div class="mainContentBox">
+            <!-- breadcrumb -->
+            <nav class="breadcrumb" role="navigation" aria-label="麵包屑">
+              <ul>
+                <li><a href="#">首頁</a></li>
+                <li><a href="#">{{PARENT_NODE}}</a></li>
+                <li aria-current="page">{{CURRENT_PAGE}}</li>
+              </ul>
+            </nav>
+
+            <h2 class="pageTitle">{{PAGE_TITLE}}</h2>
+
+            <!-- functionPanel：字型大小、回上頁、列印、Email、分享。可挑選需要的功能 -->
+            {{FUNCTION_PANEL}}
+
+            <!-- 標籤分類（可選） -->
+            {{TAG_BOX}}
+
+            <div class="mainContent">
+              <!-- 內容分組：每個 contentGroup 包一組相關區塊 -->
+              <div class="contentGroup">
+                <!-- 左圖右文範例 -->
+                <div>
+                  <h3>{{SECTION_HEADING}}</h3>
+                  <div class="flexTpl_5_7">
+                    <div class="col">
+                      <div class="picBox">
+                        <figure class="pic">
+                          <img src="{{IMAGE_PATH}}" alt="" />
+                          <figcaption>{{IMAGE_CAPTION}}</figcaption>
+                        </figure>
+                      </div>
+                    </div>
+                    <div class="col">
+                      <p>{{CONTENT_PARAGRAPH}}</p>
+                    </div>
+                  </div>
+                </div>
+                <!-- 其他圖文排列、表格、引言、下載清單等，依需求加入 -->
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+
+    <!-- 引用 footer -->
+  </div>
+  <!-- 引用 scripts -->
+</body>
+</html>

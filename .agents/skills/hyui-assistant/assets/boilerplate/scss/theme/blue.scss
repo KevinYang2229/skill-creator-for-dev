@@ -1,0 +1,186 @@
+@use 'sass:color';
+@use 'sass:math';
+@use 'sass:map';
+@use "../variable" as *; //變數
+@use "../basic/mixin" as *; //mixin
+
+header {
+  color: $colorPrimaryLight;
+  color: $colorSecondaryLight;
+  background: linear-gradient(270deg, #057BB7 0%, $colorPrimary 100%);
+
+  &.sticky {
+    .mainMenu {
+      background: linear-gradient(270deg, #057BB7 0%, $colorPrimary 100%);
+    }
+  }
+
+  h1 a {
+    color: #fff;
+
+    &:hover {
+      color: #fff;
+    }
+  }
+
+  .topNav {
+
+    .accessKeyItem {
+      color: #fff;
+    }
+
+    .navList {
+
+      ul {
+
+        button,
+        a {
+
+          &:not(:hover) {
+            color: #fff;
+          }
+
+          &:hover {
+            color: #fff;
+            background: $colorPrimary;
+          }
+        }
+      }
+
+      .language {
+        button {
+          padding-left: 10px;
+          color: #fff;
+
+          &::after {
+            border-color: #fff transparent transparent transparent;
+          }
+
+          &:hover {
+            color: #fff;
+            background: $colorPrimary;
+
+            &::after {
+              border-color: #ffff transparent transparent transparent;
+            }
+          }
+        }
+
+        a:not(:hover) {
+          color: $colorWord;
+        }
+      }
+
+      .fontSize {
+        button {
+          padding-left: 10px;
+          color: #fff;
+
+          &::after {
+            border-color: #fff transparent transparent transparent;
+          }
+
+          &.active,
+          &:hover {
+            color: #fff;
+            background: $colorPrimary;
+
+            &::after {
+              border-color: #ffff transparent transparent transparent;
+            }
+          }
+        }
+
+        ul {
+          button {
+            padding: 0;
+
+            &:not(:hover) {
+              color: $colorWord;
+            }
+          }
+
+          li {
+            &.active button {
+              color: #fff;
+            }
+          }
+        }
+      }
+
+      .topSearch {
+        button {
+          padding-left: 10px;
+          color: #fff;
+
+          &::after {
+            border-color: #fff transparent transparent transparent;
+          }
+
+          &:hover {
+            color: #fff;
+            background: $colorPrimary;
+
+            &::after {
+              border-color: #ffff transparent transparent transparent;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .mainMenu {
+    position: relative;
+
+    &::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(255, 255, 255, 0.08);
+    }
+  }
+
+  .megaMenu,
+  .menu {
+    ul li.hasChild {
+      & > a::after {
+        border-color: #fff;
+      }
+
+      &.active {
+        & > a {
+          color: #fff;
+          background: $colorPrimary;
+        }
+      }
+    }
+
+    & > ul > li {
+
+      & > a,
+      & > button {
+        color: #fff;
+
+        &:hover {
+          color: #fff;
+          background: $colorPrimary;
+        }
+      }
+    }
+  }
+
+  .webSearch .hotKeyword a:not(:hover) {
+    color: #fff;
+  }
+
+  &:has(.topSearch) {
+    .webSearch .hotKeyword a:not(:hover) {
+      color: $colorWord;
+
+      @include screen('tablet') {
+        color: #fff;
+      }
+    }
+  }
+}

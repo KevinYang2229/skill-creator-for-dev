@@ -1,0 +1,34 @@
+<!--
+  tabs：頁籤
+  結構：.tabSet.tabFunctionN > .tabBtnBox > .tabItems > button.tabBtn +
+        .tabContentGroup > .tabContent > .tabContentIn
+  目前 active 在 .tabBtn 加上 .active 與對應的 .tabContent 同時加
+  初始化：tabFunction('.tabFunction1')  ← 見 js/customize.js
+  無障礙：role="tablist"、role="tab"、role="tabpanel"、aria-labelledby/aria-controls 已由 JS 自動補上
+-->
+<div class="tabSet tabFunction1">
+  <div class="tabBtnBox">
+    <div class="tabItems">
+      <button type="button" class="tabBtn active">{{TAB_1_LABEL}}</button>
+      <button type="button" class="tabBtn">{{TAB_2_LABEL}}</button>
+      <button type="button" class="tabBtn">{{TAB_3_LABEL}}</button>
+    </div>
+  </div>
+  <div class="tabContentGroup">
+    <div class="tabContent">
+      <div class="tabContentIn">
+        {{TAB_1_CONTENT}}
+      </div>
+    </div>
+    <div class="tabContent">
+      <div class="tabContentIn">
+        {{TAB_2_CONTENT}}
+      </div>
+    </div>
+    <div class="tabContent">
+      <div class="tabContentIn">
+        {{TAB_3_CONTENT}}
+      </div>
+    </div>
+  </div>
+</div>

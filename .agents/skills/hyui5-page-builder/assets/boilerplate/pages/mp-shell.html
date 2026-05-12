@@ -1,0 +1,52 @@
+<!--
+  HyUI5 首頁（mp）骨架
+  - 主視覺 swiper + 多個內容 section
+  - 每個 section 用 <section><div class="container"><div class="flexTpl_xxx">...</div></div></section>
+  - 首頁無 breadcrumb、無 pageTitle、無 sideNav
+-->
+<!-- 引用 head：見 partials/head.html -->
+<body>
+  <div class="wrapper">
+    <a class="goCenter" href="#aC">按Enter到主內容區</a>
+    <!-- 引用 header：見 partials/header.html -->
+
+    <main>
+      <a class="accessKeyItem" href="#aC" id="aC" accesskey="C" aria-label="主要內容區">:::</a>
+
+      <!-- 主視覺 slider -->
+      <section>
+        <div class="container">
+          <div class="flexTpl_12 flexFull">
+            <div class="col">
+              <!-- 放入 components/sliderMain.html 的內容 -->
+              {{MAIN_SLIDER}}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 一個 sectionTitle + 兩欄區塊範例 -->
+      <section>
+        <div class="container">
+          <div class="flexTpl_12">
+            <div class="col">
+              <h2 class="sectionTitle">{{SECTION_TITLE}}</h2>
+              <div class="blockTypeA">
+                <!-- listBox：最新消息清單，可改為 blockTypeB、blockTypeC -->
+                {{NEWS_LIST}}
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 其他首頁區塊依需求新增：快速連結、輪播廣告、統計數字、合作單位等 -->
+
+    </main>
+
+    <!-- 引用 footer：見 partials/footer.html -->
+  </div>
+
+  <!-- 引用 scripts：見 partials/scripts.html -->
+</body>
+</html>

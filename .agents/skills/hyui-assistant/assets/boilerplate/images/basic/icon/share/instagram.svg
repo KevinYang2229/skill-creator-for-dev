@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="_圖層_1" data-name="圖層_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" version="1.1" viewBox="0 0 44 44">
+  <!-- Generator: Adobe Illustrator 29.5.0, SVG Export Plug-In . SVG Version: 2.1.0 Build 137)  -->
+  <defs>
+    <style>
+      .st0 {
+        fill: url(#_未命名漸層);
+      }
+
+      .st1 {
+        fill: #fff;
+      }
+    </style>
+    <linearGradient id="_未命名漸層" data-name="未命名漸層" x1="9.4" y1="6" x2="34.6" y2="42" gradientTransform="translate(0 46) scale(1 -1)" gradientUnits="userSpaceOnUse">
+      <stop offset="0" stop-color="#ffb900"/>
+      <stop offset="1" stop-color="#9100eb"/>
+    </linearGradient>
+  </defs>
+  <path id="Vector" class="st0" d="M22,44c12.2,0,22-9.8,22-22S34.2,0,22,0,0,9.8,0,22s9.8,22,22,22Z"/>
+  <g id="Group_3">
+    <g id="Group_4">
+      <path id="Vector_2" class="st1" d="M28.3,35.8h-12.6c-4.1,0-7.4-3.3-7.4-7.4v-12.6c0-4.1,3.3-7.4,7.4-7.4h12.6c4.1,0,7.4,3.3,7.4,7.4v12.6c0,4.1-3.3,7.4-7.4,7.4ZM15.7,10.5c-2.8,0-5.2,2.3-5.2,5.2v12.6c0,2.8,2.3,5.2,5.2,5.2h12.6c2.8,0,5.2-2.3,5.2-5.2v-12.6c0-2.8-2.3-5.2-5.2-5.2h-12.6Z"/>
+    </g>
+    <g id="Group_5">
+      <path id="Vector_3" class="st1" d="M22,28.9c-3.8,0-6.9-3.1-6.9-6.9s3.1-6.9,6.9-6.9,6.9,3.1,6.9,6.9-3.1,6.9-6.9,6.9ZM22,17.4c-2.5,0-4.6,2.1-4.6,4.6s2.1,4.6,4.6,4.6,4.6-2.1,4.6-4.6-2.1-4.6-4.6-4.6Z"/>
+    </g>
+    <g id="Group_6">
+      <path id="Vector_4" class="st1" d="M29.3,16.3c.9,0,1.6-.7,1.6-1.6s-.7-1.6-1.6-1.6-1.6.7-1.6,1.6.7,1.6,1.6,1.6Z"/>
+    </g>
+  </g>
+</svg>

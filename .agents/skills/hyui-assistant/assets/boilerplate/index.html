@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="zh-Hant" class="no-js">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>網站標題</title>
+    <meta name="description" content="網站描述" />
+    <!-- style css -->
+    <link rel="stylesheet" href="css/style.css" />
+    <!-- 其他色系 css -->
+    <link rel="stylesheet" href="css/blue.css" />
+    <!-- favicon -->
+    <link href="images/favicon.png" rel="icon" type="image/x-icon" />
+  </head>
+  <body>
+    <!-- wrapper Start -->
+    <div class="wrapper">
+      <!-- 直接跳主內容區 -->
+      <a class="goCenter" href="#aC">按Enter到主內容區</a>
+
+      <!-- header Start -->
+      <header>
+        <!-- headTop Start -->
+        <div class="headTop">
+          <div class="container">
+            <!-- 手機版主選單按鈕 Start -->
+            <button id="mobileMainMenuBtn" type="button">主選單</button>
+            <!-- 手機版主選單按鈕 End -->
+            <!-- 網站標題 Start -->
+            <h1>
+              <a href="index.html"><img src="images/footer_logo.png" alt="網站標題" />網站標題</a>
+            </h1>
+            <!-- 網站標題 End -->
+            <!-- navigation Start -->
+            <nav class="topNav" role="navigation" aria-label="頁首功能列">
+              <a class="accessKeyItem" href="#aU" id="aU" accesskey="U" aria-label="功能區塊">:::</a>
+              <!-- navList Start -->
+              <div class="navList">
+                <ul>
+                  <li><a href="#">回首頁</a></li>
+                  <li><a href="#">網站導覽</a></li>
+                </ul>
+              </div>
+              <!-- navList End -->
+              <!-- subNavList Start -->
+              <div class="subNavList">
+                <!-- fontSize Start -->
+                <div class="fontSize sliderFn">
+                  <button type="button">文字大小</button>
+                  <ul>
+                    <li><button type="button" class="smallSize">小</button></li>
+                    <li><button type="button" class="mediumSize">中</button></li>
+                    <li><button type="button" class="largeSize">大</button></li>
+                  </ul>
+                </div>
+                <!-- fontSize End -->
+                <!-- language Start -->
+                <div class="language sliderFn">
+                  <button type="button">語言選擇</button>
+                  <ul id="languageList">
+                    <li><a href="#">繁體中文</a></li>
+                    <li><a href="#">ENGLISH</a></li>
+                  </ul>
+                </div>
+                <!-- language End -->
+                <!-- topSearch 按鈕 Start -->
+                <div class="topSearch sliderFn">
+                  <button id="topSearchBtn" type="button">網站搜尋</button>
+                </div>
+                <!-- topSearch 按鈕 End -->
+              </div>
+              <!-- subNavList End -->
+            </nav>
+            <!-- navigation End -->
+            <!-- topSearch 手機版按鈕 Start -->
+            <button id="mobileSearchBtn" type="button" aria-label="搜尋按鈕"></button>
+            <!-- topSearch 手機版按鈕 End -->
+            <!-- topSearch 內容 Start -->
+            <div class="webSearch" role="search">
+              <div class="webSearchContent">
+                <div class="formList">
+                  <label for="topSearchInput" class="srOnly">搜尋</label>
+                  <input name="topSearchInput" id="topSearchInput" type="text" placeholder="請輸入文字" accesskey="S" aria-label="搜尋網站內容" />
+                  <button type="button" class="btnPrimary">查詢</button>
+                </div>
+              </div>
+            </div>
+            <!-- topSearch 內容 End -->
+          </div>
+        </div>
+        <!-- headTop End -->
+        <!-- noscript Start -->
+        <noscript>
+          您的瀏覽器不支援JavaScript語法，JavaScript語法並不影響內容的陳述。
+          <a href="#">網站導覽</a>
+        </noscript>
+        <!-- noscript End -->
+        <!-- menu Start -->
+        <div class="mainMenu">
+          <div class="container">
+            <nav class="menu" role="navigation" aria-label="主選單">
+              <ul>
+                <li>
+                  <a href="#">選單一</a>
+                  <ul>
+                    <li><a href="#">子選單</a></li>
+                  </ul>
+                </li>
+                <li><a href="#">選單二</a></li>
+                <li><a href="#">選單三</a></li>
+              </ul>
+            </nav>
+          </div>
+        </div>
+        <!-- menu End -->
+      </header>
+      <!-- header End -->
+
+      <!-- main Start -->
+      <main class="innerPage">
+        <a class="accessKeyItem" href="#aC" id="aC" accesskey="C" aria-label="主要內容區">:::</a>
+        <div class="container">
+          <!-- 主內容區 Start -->
+          <div class="mainContentBox">
+            <h2 class="pageTitle">頁面標題</h2>
+            <div class="mainContent">
+              <!-- 內容放置區塊 -->
+            </div>
+          </div>
+          <!-- 主內容區 End -->
+        </div>
+      </main>
+      <!-- main End -->
+
+      <!-- footer Start-->
+      <footer>
+        <a class="accessKeyItem" href="#aZ" id="aZ" accesskey="Z" aria-label="頁尾區">:::</a>
+        <div class="footerBox">
+          <div class="container">
+            <div class="infoBox">
+              <div class="footerLogo">
+                <a href="index.html"><img src="images/footer_logo.png" alt="網站標題" />網站標題</a>
+              </div>
+              <p class="copyright">Copyright © 2025 All Rights Reserved</p>
+              <ul class="footerInfo">
+                <li>地址：</li>
+                <li>電話：</li>
+              </ul>
+              <ul class="footerLink">
+                <li><a href="#" class="btnSecondary">隱私權政策</a></li>
+                <li><a href="#" class="btnSecondary">網站安全政策</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </footer>
+      <!-- footer End-->
+    </div>
+    <!-- wrapper End -->
+    <!-- 回到頂部 Start -->
+    <button id="scrollTop" type="button" aria-label="回到頂部">TOP</button>
+    <!-- 回到頂部 End -->
+
+    <!-- fancyBox -->
+    <script src="assets/fancybox/fancybox.umd.js"></script>
+    <script src="assets/fancybox/l10n/zh_TW.umd.js"></script>
+    <!-- Swiper -->
+    <script src="vendor/swiper/swiper-bundle.min.js"></script>
+    <!-- js -->
+    <script src="js/main.js"></script>
+    <script src="js/customize.js"></script>
+  </body>
+</html>

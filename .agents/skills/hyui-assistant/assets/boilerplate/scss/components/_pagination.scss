@@ -1,0 +1,161 @@
+@use 'sass:color';
+@use 'sass:math';
+@use 'sass:map';
+@use "../variable" as *; //變數
+@use "../basic/mixin" as *; //mixin
+
+// 分頁
+.pagination {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  padding: 16px 0 32px;
+
+  .formInline {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 8px;
+    color: #555;
+
+    span {
+      color: $colorPrimary;
+    }
+
+    button {
+      border-radius: var(--borderRadius4);
+      line-height: 2;
+    }
+
+    select,
+    input {
+      flex-grow: unset;
+    }
+
+    .count {
+      padding: 0;
+      background: none;
+      color: $colorPrimary;
+      font-weight: 500;
+
+      &.active {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  ul {
+    @include liReset;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+
+    @include screen('mobile') {
+      gap: 5px;
+    }
+  }
+
+  li {
+    &.active a {
+      color: #fff;
+      background: $colorPrimary !important;
+      border-color: $colorPrimary;
+
+      &::before {
+        filter: brightness(100);
+      }
+    }
+
+    a {
+      display: flex;
+      width: 40px;
+      height: 40px;
+      justify-content: center;
+      align-items: center;
+      gap: 10px;
+      color: $colorWord;
+      background: #DEE0E3;
+      border-radius: var(--borderRadius4);
+      text-decoration: none;
+
+      &:hover {
+        color: #fff;
+        background: $colorPrimary !important;
+        border-color: $colorPrimary;
+
+        &::before {
+          filter: brightness(100);
+        }
+      }
+    }
+
+    &[class*="Arrow"] {
+      a {
+        color: transparent;
+        border: none;
+        font-size: 0;
+        position: relative;
+        background: #fff;
+
+        &::before {
+          content: '';
+          width: 24px;
+          height: 24px;
+          background-repeat: no-repeat;
+          background-size: contain;
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          transform-origin: center;
+        }
+      }
+
+      &.prevArrow,
+      &.nextArrow {
+        a {
+          &::before {
+            width: 24px;
+            height: 24px;
+          }
+        }
+      }
+
+      &.firstArrow,
+      &.lastArrow {
+        @include screen('mobile') {
+          display: none;
+        }
+      }
+
+      &.firstArrow {
+        a::before {
+          background-image: url('../images/basic/icon/first_page_dk.svg');
+        }
+      }
+
+      &.lastArrow {
+        a::before {
+          transform: scale(-1) translate(50%, 50%);
+          background-image: url('../images/basic/icon/first_page_dk.svg');
+        }
+      }
+
+      &.prevArrow {
+        a::before {
+          background-image: url('../images/basic/icon/arrow_left_dk.svg');
+        }
+      }
+
+      &.nextArrow {
+        a::before {
+          transform: scale(-1) translate(50%, 50%);
+          background-image: url('../images/basic/icon/arrow_left_dk.svg');
+        }
+      }
+    }
+  }
+
+}

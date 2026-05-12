@@ -1,0 +1,172 @@
+@use 'sass:color';
+@use 'sass:math';
+@use 'sass:map';
+@use "../variable" as *; //變數
+@use "../basic/mixin" as *; //mixin
+
+.functionPanel {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 5px;
+  justify-content: flex-end;
+  position: relative;
+
+  a {
+    text-decoration: none;
+  }
+
+  // 上一頁
+  .back {
+    color: transparent !important;
+
+    &::before {
+      content: '';
+      background-image: url('../images/basic/icon/back_dk.svg');
+    }
+  }
+
+  // 列印
+  .print {
+    color: transparent !important;
+
+    &::before {
+      content: '';
+      background-image: url('../images/basic/icon/print_dk.svg');
+    }
+  }
+
+  // email
+  .email {
+    color: transparent !important;
+
+    &::before {
+      content: '';
+      background-image: url('../images/basic/icon/mail_dk.svg');
+    }
+  }
+}
+
+.fontSizeInner button,
+.functionPanelBtn {
+  width: 42px;
+  height: 42px;
+  padding: 5px;
+  aspect-ratio: 1;
+  line-height: 1;
+  margin: 0;
+  border-radius: 50%;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  background: #e0e0e0;
+  @include transition(0.3);
+  overflow: hidden;
+
+  @include screen('tablet') {
+    width: 42px;
+    height: 42px;
+  }
+
+  &.active,
+  &:hover {
+    color: #fff;
+    border-color: $colorPrimary;
+    background: $colorPrimary;
+
+    &::before {
+      filter: brightness(100);
+    }
+  }
+
+  &::before {
+    position: absolute;
+    width: 22px;
+    height: 22px;
+    right: auto !important;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    @include transition(0.3);
+  }
+}
+
+// 字體大小內頁
+.fontSizeInner {
+  display: flex;
+  align-items: center;
+
+  @include screen('tablet') {
+    display: none;
+  }
+
+  span {
+    @include screen('tablet') {
+      font-size: Rem(13);
+    }
+  }
+
+  ul {
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    @include liReset;
+
+    li {
+
+      &.active {
+        button {
+          color: #fff;
+          border-color: $colorPrimary;
+          background: $colorPrimary;
+        }
+      }
+    }
+  }
+}
+
+
+// 內容搜尋
+.contentSearchBtn {
+  width: fit-content;
+  margin: 0 auto 0 0;
+  gap: 8px;
+  padding: 6px 16px;
+
+  &::before {
+    content: '';
+    width: 20px;
+    height: 20px;
+    background-image: url('../images/basic/icon/search_w.svg');
+    background-repeat: no-repeat;
+    background-size: contain;
+  }
+}
+
+.contentSearchBox {
+  display: none;
+  border-top: 3px solid $colorPrimary;
+  order: 99;
+  width: 100%;
+  box-shadow: 0px 4px 16px -4px rgba(38, 43, 67, 0.30);
+  background: #F1F1F1;
+
+  .searchContent {
+    padding: 24px;
+  }
+
+  .btnBox {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 16px;
+
+    button {
+      border-radius: var(--borderRadius4);
+    }
+  }
+}

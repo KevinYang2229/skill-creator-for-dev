@@ -1,0 +1,98 @@
+@use 'sass:color';
+@use 'sass:math';
+@use 'sass:map';
+@use "../variable" as *; //變數
+@use "../basic/mixin" as *; //mixin
+
+.popupB,
+.popupS {
+  border-radius: 12px;
+  overflow: hidden;
+  display: none;
+  padding: 40px 20px 20px;
+
+  [data-fancybox-close] {
+    opacity: 1 !important;
+    top: 5px !important;
+    right: 5px !important;
+    background: none !important;
+    border-radius: 50% !important;
+
+    svg {
+      stroke: #555;
+    }
+
+    &:focus-visible {
+      outline: $colorAccessibility 2px solid;
+      outline-offset: 1px;
+      box-shadow: none;
+    }
+  }
+
+  .f-button:focus:not(:focus-visible) {
+    outline: $colorAccessibility 2px solid;
+    outline-offset: -2px;
+  }
+}
+
+.popupB {
+  max-width: 1000px;
+  width: 80vw;
+  max-height: 80vh;
+
+  .popupBox {
+    overflow: auto;
+    height: 100%;
+    padding: 0px 0px 0px;
+
+    .popTitle {
+      margin: 0 20px 10px 0;
+      font-size: Rem(24);
+      line-height: 1.4;
+    }
+  }
+
+  .popupContent {
+    border-top: #d4d4d4 1px solid;
+    margin: 0 0 20px;
+
+    p {
+      &:first-child {
+        margin-top: 0;
+      }
+
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+
+  .btnBox {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+  }
+}
+
+.popupS {
+  max-width: 500px;
+  width: 80vw;
+
+  .popupContent {
+    margin: 0 0 20px;
+
+    h3 {
+      margin: 0 40px 15px 0;
+    }
+  }
+
+  .btnBox {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+  }
+}
+
+.fancybox__content {
+  color: #000;
+}

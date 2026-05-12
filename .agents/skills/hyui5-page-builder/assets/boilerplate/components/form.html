@@ -1,0 +1,77 @@
+<!--
+  form：表單基本結構
+  - .formBox 包整組
+  - .formList 為一列（每列都需 label + formContent）
+  - .formList.inline 為水平排列（PC 左 label 右 input）
+  - 錯誤狀態：.formList.error
+  - 必填標記：<em aria-label="必填">*</em>
+  - icon 在前後：.inputBox
+  - 提示文字：id="helpXxx" + aria-describedby 指向它
+  - 驗證訊息：<div role="alert">，內含 .formNotice / .formNoticeInfo / .formNoticeSuccess / .formNoticeWarning / .formNoticeError
+  - 按鈕區：.formBtnBox
+-->
+<form action="">
+  <div class="formBox">
+    <h3>{{FORM_TITLE}}</h3>
+
+    <!-- 文字輸入 -->
+    <div class="formList">
+      <label class="formListTitle" for="field1"><em aria-label="必填">*</em>{{FIELD_1_LABEL}}</label>
+      <div class="formContent">
+        <input type="text" id="field1" aria-describedby="field1Help" placeholder="請輸入文字" required />
+        <div class="help" id="field1Help">{{FIELD_1_HELP}}</div>
+      </div>
+    </div>
+
+    <!-- 下拉選單（包 .select 取得自訂樣式） -->
+    <div class="formList">
+      <label class="formListTitle" for="field2"><em aria-label="必填">*</em>{{FIELD_2_LABEL}}</label>
+      <div class="formContent">
+        <div class="select">
+          <select id="field2" required>
+            <option value="">請選擇</option>
+            <option value="a">選項 A</option>
+            <option value="b">選項 B</option>
+          </select>
+        </div>
+      </div>
+    </div>
+
+    <!-- icon 在前 -->
+    <div class="formList">
+      <label class="formListTitle" for="fieldMail">{{EMAIL_LABEL}}</label>
+      <div class="formContent">
+        <div class="inputBox">
+          <i class="i_mail_dk"></i>
+          <input type="email" id="fieldMail" placeholder="請輸入電子信箱" />
+        </div>
+      </div>
+    </div>
+
+    <!-- 密碼 + 顯示密碼按鈕 -->
+    <div class="formList">
+      <label class="formListTitle" for="fieldPwd"><em aria-label="必填">*</em>{{PASSWORD_LABEL}}</label>
+      <div class="formContent">
+        <div class="inputBox">
+          <i class="i_lock_dk"></i>
+          <input type="password" id="fieldPwd" placeholder="請輸入密碼" required />
+          <button type="button" class="formEyes" data-show="顯示密碼" data-hide="隱藏密碼" aria-label="顯示密碼"></button>
+        </div>
+      </div>
+    </div>
+
+    <!-- 多行文字 -->
+    <div class="formList inline">
+      <label class="formListTitle" for="fieldMemo">{{MEMO_LABEL}}</label>
+      <div class="formContent">
+        <textarea id="fieldMemo" cols="30" rows="10"></textarea>
+      </div>
+    </div>
+
+    <!-- 按鈕區 -->
+    <div class="formBtnBox">
+      <button type="reset" class="btnSecondary">清除</button>
+      <button type="submit" class="btnPrimary">送出</button>
+    </div>
+  </div>
+</form>

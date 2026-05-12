@@ -1,0 +1,593 @@
+@use 'sass:color';
+@use 'sass:math';
+@use 'sass:map';
+@use "../variable" as *; //變數
+@use "../basic/mixin" as *; //mixin
+
+//submenu animation
+@keyframes showMenu {
+  0% {
+    transform: translateX(30px);
+  }
+
+  100% {
+    transform: translateX(0px);
+  }
+}
+
+// 手機版選單按鈕 -------------------------------------------------------
+#mobileMainMenuBtn {
+  display: none;
+  width: 60px;
+  height: 60px;
+  position: fixed;
+  top: 0px;
+  left: 0px;
+  z-index: 100;
+  padding: 0;
+  margin: 0;
+  color: transparent;
+  background: none;
+  border: none;
+
+  @include screen('tablet') {
+    display: block;
+  }
+
+  &:focus-visible {
+    outline-offset: -2px !important;
+  }
+
+  &::after,
+  &::before {
+    content: '';
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 24px;
+    height: 2px;
+    background: #fff;
+    box-shadow: #fff 0 7px 0 0, #fff 0 -7px 0 0;
+    @include transition(0.3)
+  }
+
+  &::after {
+    box-shadow: none;
+    opacity: 0;
+    @include transition(0.3)
+  }
+
+  // &:hover {
+  //   &::before {
+  //     transform: translate(-50%, -50%) rotate(45deg);
+  //     box-shadow: none;
+  //   }
+  //   &::after {
+  //     opacity: 1;
+  //     transform: translate(-50%, -50%) rotate(-45deg);
+  //   }
+  // }
+
+  &.active {
+    &::before {
+      transform: translate(-50%, -50%) rotate(45deg);
+      box-shadow: none;
+    }
+
+    &::after {
+      opacity: 1;
+      transform: translate(-50%, -50%) rotate(-45deg);
+    }
+  }
+}
+
+// 手機版選單 ------------------------------------------------------------
+#mobileMenu {
+  width: 280px;
+  background: $colorPrimary;
+  position: fixed;
+  left: 0;
+  top: 60px;
+  bottom: 0;
+  z-index: 99;
+  padding: 30px 20px 20px;
+  display: none;
+  transform: translateX(-100%);
+  @include transition(0.3);
+  overflow-y: auto;
+
+  a {
+    text-decoration: none;
+  }
+
+  &.open {
+    .mobileMainMenu {
+      li {
+        transform: scale(1) translateX(0px);
+        opacity: 1;
+
+        @for $i from 1 through 20 {
+          &:nth-child(#{$i}) {
+            transition-delay: #{0.07 * $i + 0.2}s;
+          }
+        }
+      }
+    }
+  }
+
+  #mobileMainMenuClose {
+    position: absolute;
+    display: block;
+    width: 3em;
+    height: 3em;
+    padding: 0;
+    min-width: auto;
+    top: 2px;
+    right: 0px;
+    margin: 0;
+    text-indent: -999px;
+    border: none;
+    background: none;
+    border: none;
+
+    &:before {
+      position: absolute;
+      width: 15px;
+      height: 15px;
+      border: 3px solid #eee;
+      content: '';
+      top: 15px;
+      right: 10px;
+      transform: rotate(45deg);
+      border-right: none;
+      border-top: none;
+    }
+  }
+
+  .mobileMainMenu {
+
+    // 共用設定
+    ul {
+      @include liReset;
+
+      li {
+
+        &.hasChild {
+
+          & > a {
+            position: relative;
+          }
+
+          &:not(:has(button)) {
+            & > a {
+              &:after {
+                content: '';
+                position: absolute;
+                right: 15px;
+                top: 50%;
+                width: 5px;
+                height: 5px;
+                border: 2px solid #fff;
+                transform: rotate(45deg) translateY(-50%);
+                border-top: none;
+                border-left: none;
+                @include transition(0.3);
+              }
+            }
+          }
+
+          &.needLink {
+            display: flex;
+            flex-wrap: wrap;
+
+            a {
+              flex-grow: 1;
+            }
+
+            button {
+              background: none;
+              position: relative;
+              border-bottom: 1px solid rgba(#fff, 0.15);
+
+              &:after {
+                content: '';
+                position: absolute;
+                right: 15px;
+                top: 50%;
+                width: 5px;
+                height: 5px;
+                border: 2px solid #fff;
+                transform: rotate(45deg) translateY(-50%);
+                border-top: none;
+                border-left: none;
+                @include transition(0.3);
+              }
+            }
+
+            ul {
+              width: 100%;
+            }
+          }
+        }
+      }
+
+      a {
+        color: #fff;
+        display: block;
+        padding: 10px 16px;
+        text-decoration: none;
+      }
+
+      ul {
+        display: none;
+
+        a {
+          padding-left: 20px;
+        }
+
+        ul {
+          a {
+            padding-left: 24px;
+          }
+
+          ul {
+            a {
+              padding-left: 28px;
+            }
+
+            ul {
+              a {
+                padding-left: 32px;
+              }
+            }
+          }
+        }
+      }
+    }
+
+    // 第一層
+    & > ul {
+      li {
+        opacity: 0;
+        transform: scale(1.15) translateX(-30px);
+        transition: transform 0.5s cubic-bezier(0.4, 0.01, 0.165, 0.99), opacity 0.6s cubic-bezier(0.4, 0.01, 0.165, 0.99);
+
+        @for $i from 1 through 20 {
+          &:nth-child(#{$i}) {
+            transition-delay: #{0.56 - ($i * 0.07)}s;
+          }
+        }
+      }
+
+      a {
+        border-bottom: 1px solid rgba(255, 255, 255, 0.15);
+      }
+    }
+  }
+
+  .topNav {
+    align-items: unset;
+    gap: 0;
+    flex-direction: column;
+    width: 100%;
+
+    .navList {
+      padding: 20px 0;
+
+      & > ul {
+        display: flex;
+        flex-direction: column;
+        flex-grow: 1;
+        gap: 10px;
+        @include liReset;
+
+        & > li {
+          flex-grow: 1;
+          position: relative;
+
+          & > a {
+            display: block;
+            padding: 3px 16px 5px;
+            color: #fff;
+            text-decoration: none;
+            text-align: center;
+            border-radius: 50px;
+            background: rgba(#000, 0.3);
+          }
+        }
+      }
+    }
+
+    .language {
+      button {
+        text-indent: 0;
+
+        &::before {
+          display: none;
+        }
+
+        &:after {
+          display: block;
+          position: absolute;
+          width: 0;
+          height: 0;
+          border-style: solid;
+          border-width: 6px 3px 0 3px;
+          border-color: #fff transparent transparent transparent;
+          top: 50%;
+          right: 10px;
+          transform: translateY(-50%);
+        }
+      }
+
+      ul {
+        @include screen('tablet') {
+          position: relative;
+          top: auto;
+          left: auto;
+          transform: none;
+        }
+      }
+    }
+  }
+}
+
+// 電腦版選單 一般 --------------------------------------------------------
+.menu {
+  width: 100%;
+  position: relative;
+
+  @include screen('tablet') {
+    display: none;
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  // 共用設定
+  ul {
+    width: 100%;
+    @include liReset;
+
+    li {
+      position: relative;
+
+      &.hasChild {
+        & > a {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 20px;
+
+          &::after {
+            content: '';
+            border: 2px solid $colorWord;
+            border-top: none;
+            border-left: none;
+            display: block;
+            width: 5px;
+            height: 5px;
+            transform: rotate(45deg);
+          }
+        }
+      }
+
+      &.leftSlider {
+        ul ul {
+          left: auto;
+          right: 100%;
+        }
+      }
+
+      a {
+        display: block;
+        padding: 10px 16px;
+        color: #fff;
+        @include transition(0.3);
+      }
+
+      &.active,
+      &:hover {
+
+        & > ul {
+          animation: showMenu 0.3s cubic-bezier(0.4, 0.01, 0.165, 0.99);
+          opacity: 1;
+          display: block;
+        }
+
+        & > a {
+          color: #fff;
+          background: $colorPrimary;
+
+          &::after {
+            content: '';
+            border-color: #fff;
+          }
+        }
+      }
+    }
+  }
+
+  // 第一層
+  & > ul {
+    display: flex;
+    max-width: $domWidth;
+    justify-content: space-between;
+    padding: 0 15px;
+    margin: 0 auto;
+
+    & > li {
+
+      & > a,
+      & > button {
+        //第一層按鈕
+        color: $colorWord;
+        font-size: Rem(18);
+        @include transition(0.3);
+      }
+    }
+
+    // 第二層
+    ul {
+      display: none;
+      top: 100%;
+      position: absolute;
+      background: rgba(#000, 0.8);
+      text-align: left;
+
+      // 第三層
+      ul {
+        top: 0;
+        left: 100%;
+      }
+
+      a {
+        color: #fff;
+        @include transition(0.3);
+
+        &:hover {
+          background: $colorPrimary;
+        }
+      }
+    }
+  }
+}
+
+// 電腦版選單 MEGA --------------------------------------------------------
+.megaMenu {
+  width: 100%;
+  position: relative;
+
+  @include screen('tablet') {
+    display: none;
+  }
+
+  a {
+    text-decoration: none;
+  }
+
+  // 共用設定
+  ul {
+    width: 100%;
+    @include liReset;
+
+    li {
+
+      &.hasChild {
+        & > a {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          gap: 20px;
+
+          &::after {
+            content: '';
+            border: 2px solid $colorWord;
+            border-top: none;
+            border-left: none;
+            display: block;
+            width: 5px;
+            height: 5px;
+            transform: rotate(45deg);
+          }
+        }
+      }
+
+      &.leftSlider {
+        ul ul {
+          left: auto;
+          right: 100%;
+        }
+      }
+    }
+  }
+
+  // 第一層
+  & > ul {
+    display: flex;
+    max-width: $domWidth;
+    justify-content: space-between;
+    margin: 0 auto;
+
+    & > li {
+
+      &.active {
+        & > ul {
+          animation: showMenu 0.3s cubic-bezier(0.4, 0.01, 0.165, 0.99);
+          opacity: 1;
+          display: flex;
+          flex-wrap: wrap;
+        }
+      }
+
+      & > a,
+      & > button {
+        //第一層按鈕
+        color: $colorWord;
+        font-size: Rem(18);
+        @include transition(0.3);
+        padding: 10px 16px;
+        display: block;
+
+        &:hover {
+          color: $aColor;
+        }
+      }
+
+      // 第二層
+      & > ul {
+        display: none;
+        background: rgba(#000, 0.8);
+        text-align: left;
+        position: absolute;
+        left: 0;
+        overflow-y: auto;
+        max-height: 50vh;
+
+        a {
+          padding: 8px 15px;
+          display: block;
+          color: #fff;
+
+          &::after {
+            display: none !important;
+          }
+        }
+
+        & > li {
+          width: 20%;
+
+          @include screen('tablet') {
+            width: 100%;
+          }
+        }
+
+        // 第三層
+        ul {
+          display: block;
+          background: rgba(#fff, 0.3);
+
+          a {
+            padding-left: 26px;
+          }
+
+          ul {
+            a {
+              padding-left: 36px;
+            }
+          }
+        }
+      }
+    }
+
+    li:hover,
+    li.active {
+      & > a {
+        color: #fff;
+        background: $colorPrimary;
+      }
+    }
+  }
+}

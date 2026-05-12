@@ -1,0 +1,63 @@
+<!--
+  HyUI5 節點頁（np）骨架：含左側 sideNav 的節點/章節頁
+  結構：.innerPage > .container > (aside.sideNav + div.mainContentBox)
+  sideNav 支援多層選單、icon、data-next-open/close 屬性
+-->
+<body>
+  <div class="wrapper">
+    <a class="goCenter" href="#aC">按Enter到主內容區</a>
+    <!-- header -->
+
+    <main>
+      <a class="accessKeyItem" href="#aC" id="aC" accesskey="C" aria-label="主要內容區">:::</a>
+      <div class="innerPage">
+        <div class="container">
+          <!-- sideNav：桌機左側、手機變摺疊 -->
+          <aside class="sideNav" data-next-open="開啟下層選單" data-next-close="收合下層選單">
+            <button type="button" id="sideNavBtn">次選單開關</button>
+            <nav id="sideMenu" aria-label="側選單" role="navigation">
+              <div class="sideMenuContent">
+                <div class="sideTitle">{{SIDE_TITLE}}</div>
+                <div class="sideNavBox">
+                  <ul>
+                    <li>
+                      <a href="#">
+                        <i class="icon"><img src="images/basic/icon/language_dk.svg" alt /></i>{{MENU_ITEM_1}}
+                      </a>
+                      <ul>
+                        <li><a href="#">{{SUBMENU_1}}</a></li>
+                        <li><a href="#">{{SUBMENU_2}}</a></li>
+                      </ul>
+                    </li>
+                    <li><a href="#"><i class="icon"><img src="images/basic/icon/language_dk.svg" alt /></i>{{MENU_ITEM_2}}</a></li>
+                  </ul>
+                </div>
+              </div>
+            </nav>
+          </aside>
+
+          <!-- 主內容區 -->
+          <div class="mainContentBox">
+            <nav class="breadcrumb" role="navigation" aria-label="麵包屑">
+              <ul>
+                <li><a href="#">首頁</a></li>
+                <li><a href="#">{{PARENT_NODE}}</a></li>
+                <li aria-current="page">{{CURRENT_PAGE}}</li>
+              </ul>
+            </nav>
+
+            <h2 class="pageTitle">{{PAGE_TITLE}}</h2>
+
+            {{FUNCTION_PANEL}}
+
+            <div class="mainContent">
+              {{NODE_CONTENT}}
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <!-- footer + scripts -->
+  </div>
+</body>
+</html>

@@ -1,0 +1,34 @@
+<!--
+  popup：燈箱（以 Fancybox 實作）
+  觸發按鈕（放在任意位置）：
+    <button type="button" data-fancybox data-src="#popup">開啟</button>
+  內容節點放在 main 內最底部，id 對應 data-src
+  兩種尺寸：.popupB（大）/ .popupS（小）
+  若要頁面載入就開啟：於 popupB/popupS 上加 .showPopup
+-->
+
+<!-- 大尺寸燈箱 -->
+<div id="popup" class="popupB">
+  <div class="popupBox">
+    <div class="popTitle">{{POP_TITLE}}</div>
+    <div class="popupContent">
+      <p>{{POP_CONTENT}}</p>
+    </div>
+    <div class="btnBox">
+      <button type="button" class="cancel btnSecondary">取消</button>
+      <button type="button" class="submit btnPrimary">確認</button>
+    </div>
+  </div>
+</div>
+
+<!-- 小尺寸燈箱 -->
+<div id="popup2" class="popupS">
+  <div class="popupBox">
+    <div class="popTitle">{{POP_TITLE}}</div>
+    <div class="popupContent">{{POP_CONTENT}}</div>
+    <div class="btnBox">
+      <button type="button" class="cancel btnSecondary">取消</button>
+      <button type="button" class="submit btnPrimary">確認</button>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,29 @@
+<!--
+  accordion：手風琴
+  結構：.accordion > .accordionList > button.accordionBtn + .accordionContent > .content
+  要預設展開某一項 → 該 .accordionList 加上 .active
+  data-state-open / data-state-close 供螢幕閱讀器讀出狀態
+  初始化：accordionFunction('.accordion')  ← 見 js/customize.js
+-->
+<div class="accordion" data-state-open="展開" data-state-close="收合">
+  <div class="accordionList active">
+    <button type="button" class="accordionBtn">{{ITEM_1_TITLE}}</button>
+    <div class="accordionContent">
+      <div class="content">
+        {{ITEM_1_CONTENT}}
+      </div>
+    </div>
+  </div>
+  <div class="accordionList">
+    <button type="button" class="accordionBtn">{{ITEM_2_TITLE}}</button>
+    <div class="accordionContent">
+      <div class="content">{{ITEM_2_CONTENT}}</div>
+    </div>
+  </div>
+  <div class="accordionList">
+    <button type="button" class="accordionBtn">{{ITEM_3_TITLE}}</button>
+    <div class="accordionContent">
+      <div class="content">{{ITEM_3_CONTENT}}</div>
+    </div>
+  </div>
+</div>

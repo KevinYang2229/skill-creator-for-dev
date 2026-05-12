@@ -1,0 +1,87 @@
+@use 'sass:color';
+@use 'sass:math';
+@use 'sass:map';
+@use "../variable" as *; //變數
+@use "../basic/mixin" as *; //mixin
+
+//字體大小
+.fontSize {
+  display: flex;
+  align-items: center;
+  position: relative;
+  z-index: 99;
+
+  ul {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    align-items: center;
+    @include liReset;
+
+    li {
+
+      &.active {
+        button {
+          color: #fff;
+          border-color: $colorPrimary;
+          background: $colorPrimary;
+        }
+      }
+    }
+
+    button {
+      padding: 5px;
+      aspect-ratio: 1;
+      line-height: 1;
+      margin: 0;
+      border-radius: 50%;
+      cursor: pointer;
+      @include transition(0.3);
+
+      &:hover {
+        color: #fff;
+        border-color: $colorPrimary;
+        background: $colorPrimary;
+      }
+    }
+  }
+
+  &.sliderFn {
+    & > button {
+      &::before {
+        background: url('../images/basic/icon/format_size_w.svg') center no-repeat;
+      }
+    }
+
+    ul {
+      display: none;
+      position: absolute;
+      top: calc(100% + 5px);
+      left: 50%;
+      transform: translateX(-50%);
+      border-radius: 50px;
+      overflow: hidden;
+      box-shadow: 5px 5px 10px rgba(0, 0, 0, 0.2);
+      background: #fff;
+      list-style: none;
+
+      li {
+        padding: 5px 10px;
+
+        &:first-child {
+          padding: 10px 10px 0px;
+        }
+
+        &:last-child {
+          padding: 0px 10px 10px;
+        }
+      }
+
+      button {
+        width: 38px;
+        height: 38px;
+        padding: 0;
+      }
+    }
+  }
+}

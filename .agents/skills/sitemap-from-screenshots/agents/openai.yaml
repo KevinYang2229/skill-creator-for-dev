@@ -1,0 +1,4 @@
+interface:
+  display_name: "網站架構圖生成器"
+  short_description: "從網站截圖產生可貼進 FigJam 的 sitemap"
+  default_prompt: "請根據我提供的網站截圖產生資訊架構圖，輸出為可直接貼進 FigJam 的 Mermaid 程式碼"

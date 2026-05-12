@@ -1,0 +1,93 @@
+@use 'sass:color';
+@use 'sass:math';
+@use 'sass:map';
+@use "../variable" as *; //變數
+@use "../basic/mixin" as *; //mixin
+
+// header
+header {
+  width: 100%;
+  position: relative;
+  z-index: 55;
+
+  @include screen('tablet') {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: $colorPrimary;
+  }
+
+  &.sticky {
+    .mainMenu {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: #fff;
+    }
+  }
+
+  .headTop {
+
+    &:has(.topSearch) {
+      .topNav {
+        width: auto;
+        order: 3;
+      }
+    }
+  }
+
+  .container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    gap: 10px 20px;
+    align-items: center;
+
+    @include screen('tablet') {
+      justify-content: center;
+    }
+  }
+
+  h1 {
+    margin: 0;
+    font-size: Rem(36);
+    margin: 0;
+    order: 2;
+
+    a {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      color: $colorPrimary;
+      font-size: Rem(40);
+      font-weight: 900;
+      letter-spacing: 2px;
+      height: 72px;
+      padding: 10px 0;
+      text-decoration: none;
+
+      @include screen('tablet') {
+        height: 60px;
+        font-size: Rem(28);
+        color: #fff;
+      }
+    }
+
+    span {
+      font-size: Rem(20);
+      margin-top: 13px;
+      margin-left: -13px;
+      letter-spacing: 2px;
+
+      @include screen('tablet') {
+        margin-top: 7px;
+      }
+    }
+
+    img {
+      height: 100%;
+    }
+  }
+}

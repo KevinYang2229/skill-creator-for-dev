@@ -1,0 +1,55 @@
+@use 'sass:color';
+@use 'sass:math';
+@use 'sass:map';
+@use "../variable" as *; //變數
+@use "../basic/mixin" as *; //mixin
+
+// 設定當物件被:focus-visible時的效果
+*:focus-visible {
+  outline: $colorAccessibility 2px solid;
+  outline-offset: -2px;
+}
+
+header h1 a,
+#mobileSearchBtn,
+#mobileMainMenuBtn {
+  &:focus-visible {
+    outline-offset: -2px !important;
+  }
+}
+
+// 導盲磚
+.accessKeyItem {
+  position: absolute;
+  top: 5px;
+  left: 5px;
+  z-index: 9;
+  text-decoration: none;
+  scroll-margin: 60px 0 0 0;
+
+  @include screen('mobile') {
+    display: none;
+  }
+
+  &:focus,
+  &:focus-visible {
+    outline: $colorAccessibility 2px solid;
+    outline-offset: 1px;
+  }
+}
+
+// no-js
+.no-js {
+  noscript {
+    display: block;
+    padding: 0.5em;
+    border: 2px solid $colorAccessibility;
+    background: #fff;
+    color: #666;
+    overflow: hidden;
+    line-height: 1.45em;
+    font-size: 0.813em;
+    margin: 0 0.5em 0.5em;
+    border-radius: var(--borderRadius8);
+  }
+}

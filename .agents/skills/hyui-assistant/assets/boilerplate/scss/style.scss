@@ -1,0 +1,45 @@
+// 外部 CSS 套件
+@use '../vendor/swiper/swiper-bundle.min.css'; //swiper初始套件
+@use '../vendor/fancybox/fancybox.css'; //fancybox初始套件
+
+// 共通
+@use 'basic/normalize'; //reset
+@use 'basic/fontFamily'; //字型檔
+@use 'basic/print'; //列印樣式
+@use 'basic/accessibility'; //無障礙
+@use 'basic/default'; //基本設定
+@use 'basic/flexTemplate'; //flex 版面配置
+@use 'components/icon'; //icon
+@use 'components/button'; //按鈕
+@use 'components/popup'; //彈跳視窗
+@use 'components/form'; //表單
+@use 'components/table'; //表單
+@use 'components/topNav'; //上方功能列
+@use 'components/sideNav'; //側方功能列
+@use 'components/breadcrumb'; //麵包屑
+@use 'components/functionPanel'; // 內頁功能
+@use 'components/tag'; // 分類
+@use 'components/share'; // 內頁功能
+@use 'components/pagination'; // 分頁
+@use 'components/search'; //搜尋
+@use 'components/language'; //搜尋
+@use 'components/fontsize'; //字體大小
+@use 'components/menu'; //選單
+@use 'components/fatFooter'; //選單
+@use 'components/slider'; //swiper
+@use 'components/accordion'; // 手風琴
+@use 'components/tabs'; //tab
+@use 'components/floatNav'; // 漂浮按鈕
+@use 'components/download'; // 下載檔案
+@use 'components/marquee'; // 跑馬燈
+
+//各別頁面
+@use 'template/header'; //header
+@use 'template/main'; //main
+@use 'template/footer'; //footer
+@use 'pages/mp'; //首頁
+@use 'pages/np'; //NP
+@use 'pages/lp'; //LP
+@use 'pages/cp'; //CP
+@use 'pages/page404'; //CP
+@use 'pages/sitemap'; //sitemap

@@ -1,0 +1,225 @@
+@use 'sass:color';
+@use 'sass:math';
+@use 'sass:map';
+@use "../variable" as *; //變數
+@use "../basic/mixin" as *; //mixin
+
+@mixin btn($bColor) {
+  white-space: nowrap;
+  width: fit-content;
+  cursor: pointer;
+  margin: 0;
+  padding: 6px 18px;
+  border: none;
+  border-radius: var(--borderRadius4);
+  font-weight: 400;
+  gap: 6px;
+  line-height: 2;
+  text-decoration: none;
+  background: $bColor;
+  @include transition(0.3);
+}
+
+button {
+  color: $colorWord;
+  border: 1px solid $colorWord;
+  @include btn($btnNormal);
+
+  &.btnS {
+    font-size: Rem(14);
+    padding: 4px 16px;
+
+    i {
+      &::before {
+        width: 16px;
+        height: 16px;
+      }
+    }
+  }
+
+  &.btnL {
+    font-size: Rem(18);
+    padding: 12px 18px;
+  }
+
+  &[disabled] {
+    color: rgba(#333, 0.5) !important;
+    border: none !important;
+    background: $colorDisabled !important;
+    cursor: not-allowed;
+
+    i {
+      opacity: 0.5;
+    }
+  }
+
+  &.active,
+  &:hover {
+    background: $btnNormalHover;
+  }
+}
+
+.btnPrimary {
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  @include btn($colorPrimary);
+
+  // border
+  &.bd {
+    color: $btnPrimary;
+    border: 1px solid $btnPrimary;
+    background: none;
+
+    &:hover {
+      color: $btnPrimary;
+      background: $colorPrimaryLight;
+    }
+  }
+
+  // no border
+  &.nbd {
+    color: $btnPrimary;
+    background: none;
+    border: none;
+
+    &:hover {
+      color: $btnPrimary;
+      background: $colorPrimaryLight;
+    }
+  }
+
+  &.active,
+  &:hover {
+    color: #fff;
+    background: $btnPrimaryHover;
+  }
+}
+
+.btnSecondary {
+  color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  @include btn($colorSecondary);
+
+  // border
+  &.bd {
+    color: $colorSecondary;
+    border: 1px solid $colorSecondary;
+    background: none;
+
+    &:hover {
+      color: $colorSecondary;
+      background: $colorSecondaryLight;
+    }
+  }
+
+  // no border
+  &.nbd {
+    color: $colorSecondary;
+    background: none;
+    border: none;
+
+    &:hover {
+      color: $colorSecondary;
+      background: $colorSecondaryLight;
+    }
+  }
+
+  &.active,
+  &:hover {
+    color: #fff;
+    background: $btnSecondaryHover;
+  }
+}
+
+.btnNormal {
+  color: $colorWord;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  @include btn($btnNormal);
+
+  // border
+  &.bd {
+    border: 1px solid $btnNormal;
+    background: none;
+
+    &:hover {
+      color: $colorWord;
+      background: $btnNormalLightHover;
+    }
+  }
+
+  // no border
+  &.nbd {
+    background: none;
+    border: none;
+
+    &:hover {
+      color: $colorWord;
+      background: $btnNormalLightHover;
+    }
+  }
+
+  &.active,
+  &:hover {
+    color: $colorWord;
+    background: $btnNormalHover;
+  }
+}
+
+
+.bp {
+  display: flex;
+  flex-direction: column;
+  gap: 80px;
+  padding: 30px;
+  background: #fff;
+  overflow: auto;
+
+  .btnGrp {
+    width: fit-content;
+    display: flex;
+    gap: 20px;
+    line-height: 1.4;
+    align-items: center;
+
+    & > .title {
+      width: 120px;
+      flex-shrink: 0;
+      text-align: center;
+    }
+
+    ul {
+      @include liReset;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-start;
+      gap: 20px;
+
+      ul {
+        flex-direction: column;
+      }
+    }
+
+    li {
+      display: flex;
+      gap: 20px;
+      align-items: center;
+
+      .title {
+        width: 100px;
+        flex-shrink: 0;
+      }
+    }
+
+    .btnBox {
+      display: flex;
+      gap: 30px;
+      align-items: center;
+    }
+  }
+}

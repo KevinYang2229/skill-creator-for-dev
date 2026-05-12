@@ -1,0 +1,52 @@
+<!--
+  HyUI5 列表頁（lp）骨架：條列式新聞/公告列表
+  變體：
+    - lp.html  條列式 listGroup（帶編號、標題、部門、日期）
+    - lp2.html 卡片式
+    - lp_table.html 表格式 tableList
+    - lp_album.html 相簿式
+  三者骨架都在 innerPage > mainContentBox，差別在 mainContent 內放什麼
+-->
+<body>
+  <div class="wrapper">
+    <a class="goCenter" href="#aC">按Enter到主內容區</a>
+    <!-- header -->
+
+    <main>
+      <a class="accessKeyItem" href="#aC" id="aC" accesskey="C" aria-label="主要內容區">:::</a>
+      <div class="innerPage">
+        <div class="container">
+          <div class="mainContentBox">
+            <nav class="breadcrumb" role="navigation" aria-label="麵包屑">
+              <ul>
+                <li><a href="#">首頁</a></li>
+                <li aria-current="page">{{CURRENT_PAGE}}</li>
+              </ul>
+            </nav>
+
+            <h2 class="pageTitle">{{PAGE_TITLE}}</h2>
+
+            <!-- functionPanel 可包含條件查詢 contentSearchBtn + contentSearchBox -->
+            {{FUNCTION_PANEL_WITH_SEARCH}}
+
+            <!-- 標籤分類（可選） -->
+            {{TAG_BOX}}
+
+            <div class="mainContent">
+              <!-- 條列式：div.listGroup > ul > li > a（.num + .title + .dept + time） -->
+              <!-- 表格式：div.tableList > table（thead + tbody） -->
+              <!-- 卡片式：div.blockTypeB / blockTypeC -->
+              <!-- 相簿式：div.albumList -->
+              {{LIST_CONTENT}}
+
+              <!-- pagination -->
+              {{PAGINATION}}
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <!-- footer + scripts -->
+  </div>
+</body>
+</html>

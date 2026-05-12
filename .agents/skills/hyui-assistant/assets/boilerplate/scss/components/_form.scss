@@ -1,0 +1,630 @@
+@use 'sass:color';
+@use 'sass:math';
+@use 'sass:map';
+@use "../variable" as *; //變數
+@use "../basic/mixin" as *; //mixin
+
+.notionInfo {
+  color: $colorWord;
+
+  span {
+    color: red;
+  }
+}
+
+.inputFile {
+  flex-grow: 1;
+  min-width: 200px;
+  color: $colorWord;
+  padding: 4px 12px;
+  border-radius: var(--borderRadius8);
+  border: 1px solid $tableNormal;
+  background: #FFF;
+  align-self: stretch;
+  height: 44px;
+  position: relative;
+
+  input {
+    border: none;
+    background: none;
+  }
+
+  .uploadStyle {
+    position: absolute;
+    right: 5px;
+    top: 5px;
+    padding: 0px 16px;
+    border-radius: var(--borderRadius8);
+    cursor: pointer;
+  }
+
+  .downloadFile {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+  }
+
+  .fileName {
+    width: calc(100% - 150px);
+    @include lineClamp(1);
+  }
+}
+
+.formEyes {
+  position: absolute;
+  right: 12px;
+  top: 10px;
+  border: none;
+  width: 24px;
+  height: 24px;
+  padding: 0;
+  margin: 0;
+  border-radius: 0;
+  background: url('../images/basic/icon/visibility_off_dk.svg') no-repeat center !important;
+
+  &.active {
+    background: url('../images/basic/icon/visibility_dk.svg') no-repeat 0px -1px !important;
+  }
+}
+
+.inputOption {
+  cursor: pointer;
+
+  // checkbox
+  &:has([type="checkbox"]) {
+    position: relative;
+    display: flex;
+    gap: 8px;
+    align-items: flex-start;
+    cursor: pointer;
+    padding: 4px 0;
+
+    &::before {
+      content: '' !important;
+      width: 24px;
+      height: 24px;
+      border: 2px solid $checkboxRadio;
+      position: absolute;
+      top: 9px;
+      left: 0;
+      border-radius: var(--borderRadius4);
+      pointer-events: none;
+    }
+
+    [type="checkbox"] {
+      width: 24px;
+      height: 24px;
+      margin-top: 4px;
+      opacity: 0;
+      cursor: pointer;
+    }
+
+    &:has([type="checkbox"]:focus-visible) {
+      &::before {
+        outline: 2px solid red;
+        outline-offset: 2px;
+      }
+    }
+
+    &:has([type="checkbox"]:checked) {
+      &::before {
+        background: url('../images/basic/icon/check_w.svg'), $colorPrimary;
+        border-color: $colorPrimary;
+        background-position: center center;
+      }
+    }
+  }
+
+  // radio
+  &:has([type="radio"]) {
+    padding: 4px 0;
+    position: relative;
+    display: flex;
+    gap: 8px;
+    align-items: flex-start;
+    cursor: pointer;
+
+    &::before {
+      content: '' !important;
+      width: 20px;
+      height: 20px;
+      border: 2px solid $checkboxRadio;
+      position: absolute;
+      top: 12px;
+      left: 0;
+      border-radius: 50%;
+      pointer-events: none;
+    }
+
+    [type="radio"] {
+      width: 20px;
+      height: 20px;
+      // margin-top: 7px;
+      opacity: 0;
+      cursor: pointer;
+    }
+
+    &:has([type="radio"]:focus-visible) {
+      &::before {
+        outline: 2px solid red;
+        outline-offset: 2px;
+      }
+    }
+
+    &:has([type="radio"]:checked) {
+      &::before {
+        background: $colorPrimary;
+        box-shadow: inset 0px 0px 0px 2px #fff;
+        border-color: $colorPrimary;
+      }
+    }
+  }
+
+  // checkbox,radio禁用
+  &:has(input[disabled]) {
+    cursor: not-allowed !important;
+    opacity: 0.5;
+
+    input {
+      cursor: not-allowed !important;
+    }
+  }
+
+  label {
+    order: 2;
+  }
+}
+
+.select {
+  position: relative;
+  isolation: isolate;
+
+  &::before {
+    content: '';
+    width: 24px;
+    height: 24px;
+    display: block;
+    background: url('../images/basic/icon/select_arrow_dk.svg') no-repeat center;
+    z-index: 9;
+    position: absolute;
+    right: 5px;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+  }
+
+  & > select {
+    width: 100%;
+    padding-right: 30px !important;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+
+    &[disabled] {
+      background: $formDisabled;
+      opacity: 1;
+    }
+  }
+}
+
+input:not([type="checkBox"], [type="radio"]),
+select,
+textarea {
+  color: $colorWord;
+  padding: 0px 12px;
+  border-radius: var(--borderRadius4);
+  border: 1px solid $tableNormal;
+  background: #FFF;
+  flex-grow: 1;
+
+  &::placeholder {
+    color: $colorWord;
+  }
+
+  &:focus-visible {
+    outline-color: $formFocus;
+    outline-offset: 0;
+  }
+
+  // 禁用
+  &[disabled] {
+    background: $formDisabled;
+    cursor: not-allowed;
+
+    &::placeholder {
+      opacity: 0.75;
+    }
+  }
+}
+
+textarea {
+  min-height: 100px;
+  padding: 12px;
+}
+
+fieldset {
+  all: unset;
+  position: relative;
+  box-sizing: border-box;
+
+  legend {
+    all: unset;
+    float: left;
+    transform: none;
+    box-sizing: border-box;
+  }
+}
+
+.inputBox {
+  flex-grow: 1;
+  position: relative;
+
+  input {
+    width: 100%;
+  }
+
+  // icon
+  i {
+    position: absolute;
+    top: 10px;
+    z-index: 2;
+
+    &::before {
+      content: '';
+      width: 24px;
+      height: 24px;
+      display: block;
+    }
+  }
+
+  // icon在前面
+  &:has(i + *) {
+    i {
+      left: 10px;
+    }
+
+    input:not([type="checkBox"], [type="radio"]),
+    select,
+    textarea {
+      padding-left: 45px;
+    }
+  }
+
+  &:has(* + i) {
+    i {
+      right: 10px;
+    }
+
+    input:not([type="checkBox"], [type="radio"]),
+    select,
+    textarea {
+      padding-right: 45px;
+    }
+  }
+}
+
+.formBox {
+  display: flex;
+  flex-direction: column;
+
+  --titleWidth: 160px;
+
+  .gridBox {
+    border-top: 2px solid $tableNormal;
+
+    .formList {
+      @include screen('xsMobile') {
+        padding-left: 0 !important;
+        padding-top: 20px !important;
+        flex-direction: column !important;
+      }
+
+      .formList {
+        @include screen('mobile') {
+          flex-direction: column !important;
+        }
+      }
+
+      &:has(.formContent) {
+        border-bottom: 1px dashed $tableNormal;
+      }
+    }
+  }
+
+
+  .btnBox {
+    display: flex;
+    gap: 10px;
+  }
+
+  // 共用
+  &:has(em) {
+    .formList .formListTitle {
+      padding-left: 20px;
+    }
+  }
+
+  .formList {
+    display: flex;
+    flex-direction: column;
+    padding: 12px 0;
+
+    .formListTitle {
+      line-height: 1.4;
+      color: $colorWord;
+      padding: 10px 10px 10px 0;
+      flex-shrink: 0;
+      position: relative;
+
+      @include screen('xsMobile') {
+        width: auto;
+        padding: 0px;
+      }
+    }
+
+    .formContent {
+      flex-grow: 1;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      position: relative;
+      isolation: isolate;
+      gap: 0 8px;
+
+      &:not(.inline) {
+        flex-direction: column;
+
+        .formList:last-child {
+          border: none;
+        }
+      }
+
+      @include screen('mobile') {
+        width: 100%;
+      }
+
+      &.inline {
+        align-items: center;
+
+
+        .formList {
+          padding: 0;
+        }
+      }
+    }
+
+
+    // 預設
+
+    // 必填
+    .formListTitle {
+      em {
+        color: $colorError;
+        margin-right: 4px;
+        position: absolute;
+        left: 0;
+        top: 14px;
+      }
+    }
+
+    // 錯誤
+    &.error {
+
+      input:not([type="checkBox"], [type="radio"]),
+      select,
+      textarea {
+        border-color: $formError;
+
+        &::placeholder {
+          color: $formError;
+        }
+
+        &:focus-visible {
+          outline-color: $colorError;
+          outline-offset: 0;
+        }
+      }
+    }
+
+    .help {
+      width: 100%;
+      color: $colorWord;
+      font-size: Rem(15);
+      font-weight: 400;
+      padding-top: 10px;
+    }
+
+    [role='alert']:has([class^='formNotice']) {
+      padding-top: 10px;
+    }
+
+    &.inline {
+      .formList {
+        &:first-child {
+          padding-top: 0;
+        }
+
+        &:last-child {
+          padding-bottom: 0;
+        }
+      }
+    }
+  }
+
+  $itemGap: 14px;
+
+  // 水平行內表單
+  .inline {
+    flex-direction: row;
+    align-items: flex-start;
+    gap: $itemGap;
+
+    @include screen('xsMobile') {
+      flex-direction: column;
+      gap: 8px;
+      align-items: stretch;
+
+      legend {
+        margin-bottom: 5px;
+      }
+    }
+
+    .formListTitle {
+      width: var(--titleWidth);
+    }
+
+    label:has([type="checkbox"]),
+    label:has([type="radio"]) {
+      word-break: break-all;
+    }
+
+    & > .inputOption {
+      // & + .inputOption {
+      //   margin-left: 10px;
+      // }
+
+      & + input {
+        width: auto;
+        flex-grow: 1;
+      }
+    }
+
+    .select {
+      flex-grow: 1;
+    }
+  }
+
+  .noFull {
+
+    & > *:not(label, [type="checkBox"], [type="radio"]) {
+      width: fit-content;
+      flex-grow: unset !important;
+    }
+
+    .inputBox {
+      width: fit-content;
+    }
+  }
+
+  .formBtnBox {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    padding: 24px 0 0;
+  }
+
+  [class*="flexTpl"] {
+    flex-direction: row !important;
+    gap: 8px;
+    position: relative;
+    flex-grow: 1;
+
+    &:not(:has(.inline)) {
+
+      input:not([type="checkBox"], [type="radio"]),
+      select,
+      textarea {
+        width: 100%;
+      }
+    }
+
+  }
+
+  .formList [class*="flexTpl"] .formList {
+    border: none !important;
+    padding: 0;
+  }
+
+  // captcha
+  img.captcha {
+    padding: 0;
+    line-height: 0;
+    border-radius: 0;
+    vertical-align: middle;
+    max-height: 2.5em;
+    margin: 0 0.3em;
+    border: 1px solid #ccc;
+  }
+}
+
+// form notice
+[role="alert"] {
+  width: 100% !important;
+}
+
+[class^='formNotice'] {
+  position: relative;
+  width: 100%;
+  padding: 4px 42px 4px 12px;
+  color: $noticeNormalGWord;
+  background: $noticeNormalGBg;
+  border-radius: var(--borderRadius4);
+  isolation: isolate;
+
+  &::before {
+    width: 20px;
+    height: 20px;
+    display: block;
+    position: absolute;
+    top: 10px;
+    left: 12px;
+    z-index: 2;
+  }
+
+  .noticeClose {
+    position: absolute;
+    right: 5px;
+    top: 8px;
+    background: none;
+    border-radius: 0;
+    padding: 0;
+    width: 24px;
+    height: 24px;
+    background: url('../images/basic/icon/close_dk.svg') no-repeat center;
+    opacity: 0.4;
+  }
+}
+
+[class^='formNoticeInfo'] {
+  color: $noticeNormalWord;
+  background-color: $noticeNormalBg;
+  padding-left: 42px;
+
+  &:before {
+    content: '';
+    background-image: url('../images/basic/icon/info.svg');
+  }
+}
+
+[class^='formNoticeSuccess'] {
+  color: $noticeSuccessWord;
+  background-color: $noticeSuccessBg;
+  padding-left: 42px;
+
+  &:before {
+    content: '';
+    background-image: url('../images/basic/icon/check_circle.svg');
+  }
+}
+
+[class^='formNoticeWarning'] {
+  color: $noticeWarningWord;
+  background-color: $noticeWarningBg;
+  padding-left: 42px;
+
+  &:before {
+    content: '';
+    background-image: url('../images/basic/icon/warning.svg');
+  }
+}
+
+[class^='formNoticeError'] {
+  color: $noticeErrorWord;
+  background-color: $noticeErrorBg;
+  padding-left: 42px;
+
+  &:before {
+    content: '';
+    background-image: url('../images/basic/icon/cancel.svg');
+  }
+}

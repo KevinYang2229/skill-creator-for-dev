@@ -1,0 +1,314 @@
+@use 'sass:color';
+@use 'sass:math';
+@use 'sass:map';
+@use "../variable" as *; //變數
+@use "../basic/mixin" as *; //mixin
+
+.listGroup {
+  ul {
+    @include liReset;
+  }
+
+  li {
+    border-top: 1px solid #DEE0E3;
+
+    &:last-child {
+      border-bottom: 1px solid #DEE0E3;
+    }
+
+    a {
+      display: flex;
+      gap: 24px;
+      padding: 24px 16px 24px 48px;
+      position: relative;
+      text-decoration: none;
+
+      @include screen('tablet') {
+        flex-direction: column;
+        gap: 5px 24px;
+      }
+
+      &:not(:hover) {
+        color: $colorWord;
+      }
+
+      .num {
+        width: 24px;
+        text-align: right;
+        color: #000;
+        position: absolute;
+        left: 0;
+        top: 26px;
+
+        &::after {
+          content: '.';
+        }
+      }
+
+      .title {
+        font-weight: 600;
+        font-size: Rem(18);
+        @include lineClamp(8);
+      }
+
+      .dept {
+        margin: 0 0 0 auto;
+
+        @include screen('tablet') {
+          margin: 0 auto 0 0;
+        }
+      }
+
+      .dept,
+      time {
+        min-width: 90px;
+        font-weight: 400;
+        color: $colorWordLight;
+      }
+    }
+  }
+}
+
+.listPhoto {
+  ul {
+    @include liReset;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+
+  }
+
+  @include screen('tablet') {
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+
+  @include screen('xsMobile') {
+    gap: 24px;
+  }
+
+  li {
+    @include screen('tabletMin') {
+      &:nth-child(even) {
+        .col:has(.pic) {
+          order: 10;
+        }
+      }
+    }
+
+    @include screen('tablet') {
+      width: itemWidth(32, 2);
+    }
+
+    @include screen('xsMobile') {
+      width: 100%;
+      padding-bottom: 24px;
+      border-bottom: 1px solid #DEE0E3;
+    }
+
+    a {
+      padding: 16px 16px 16px 48px;
+      display: block;
+      position: relative;
+      text-decoration: none;
+
+      @include screen('tablet') {
+        padding: 0;
+
+        [class*="flexTpl"] {
+          flex-direction: column;
+        }
+
+        .col {
+          width: 100% !important;
+        }
+      }
+
+      &:not(:hover) {
+        color: $colorWord;
+      }
+
+      .col:has(.pic) {
+        display: flex;
+        gap: 10px;
+      }
+
+      .num {
+        width: 30px;
+        text-align: right;
+        color: #000;
+        line-height: 1;
+        position: absolute;
+        left: 0;
+        top: 18px;
+
+        @include screen('tablet') {
+          text-align: left;
+          width: auto;
+          position: relative;
+          top: auto;
+          margin-bottom: 10px;
+        }
+
+        &::after {
+          content: '.';
+        }
+      }
+
+      .pic {
+        width: 100%;
+        max-width: 412px;
+        flex-shrink: 0;
+        line-height: 0;
+        overflow: hidden;
+
+        @include screen('tablet') {
+          max-width: none;
+        }
+
+        img {
+          aspect-ratio: 4/3;
+        }
+      }
+
+      .infoBox {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        flex-grow: 1;
+        gap: 10px;
+      }
+
+      .title {
+        font-weight: 500;
+        font-size: Rem(28);
+        line-height: 1.5;
+        @include lineClamp(2);
+        letter-spacing: 1.2px;
+
+        @include screen('tablet') {
+          font-size: Rem(22);
+        }
+      }
+
+      .subInfo {
+        display: flex;
+        gap: 10px;
+      }
+
+      .dept,
+      time {
+        min-width: 90px;
+        font-weight: 400;
+        color: $colorWordLight;
+      }
+
+      .con {
+        max-height: 160px;
+        @include lineClamp(5);
+        color: $colorWord;
+      }
+    }
+  }
+}
+
+.listAlbum {
+  ul {
+    @include liReset;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 32px;
+
+    @include screen('mobile') {
+      gap: 20px;
+    }
+  }
+
+  li {
+    width: itemWidth(32, 4);
+    background: #fff;
+    box-shadow: 0px 4px 16px -4px rgba(38, 43, 67, 0.30);
+    @include transition(0.3);
+
+    @include screen('tablet') {
+      width: itemWidth(32, 3);
+    }
+
+    @include screen('mobile') {
+      width: itemWidth(20, 2);
+    }
+
+    @include screen('xsMobile') {
+      width: 100%;
+    }
+
+    &:hover {
+      transform: translate(-5px, -5px);
+      box-shadow: 5px 9px 16px -4px rgba(38, 43, 67, 0.30);
+    }
+
+    a {
+      display: flex;
+      flex-direction: column;
+      position: relative;
+      padding: 0;
+      text-decoration: none;
+
+      &:not(:hover) {
+        color: $colorWord;
+      }
+
+      .pic {
+        max-width: 100%;
+        flex-shrink: 0;
+        line-height: 0;
+        overflow: hidden;
+
+        img {
+          aspect-ratio: 4/3;
+        }
+      }
+
+      .infoBox {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        flex-grow: 1;
+        gap: 10px;
+        padding: 16px;
+      }
+
+      .title {
+        font-weight: 500;
+        font-size: Rem(24);
+        line-height: 1.5;
+        @include lineClamp(2);
+        letter-spacing: 1.2px;
+
+        @include screenMax('1300') {
+          font-size: Rem(22);
+        }
+      }
+
+      .subInfo {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .dept,
+      time {
+        min-width: 90px;
+        font-weight: 400;
+        color: $colorWordLight;
+      }
+
+      .con {
+        @include lineClamp(1);
+        overflow: hidden;
+        color: $colorWord;
+        margin-bottom: Rem(16);
+      }
+    }
+  }
+}

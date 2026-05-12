@@ -1,0 +1,369 @@
+@use 'sass:color';
+@use 'sass:math';
+@use 'sass:map';
+@use "../variable" as *; //變數
+@use "./mixin" as *; //mixin
+
+* {
+  box-sizing: border-box;
+  min-width: 0;
+  min-height: 0;
+
+  &::before,
+  &::after {
+    box-sizing: border-box;
+  }
+}
+
+body {
+  font-family: $NotoSansTC;
+  font-size: 1rem;
+  line-height: 2;
+  letter-spacing: 0.6px;
+
+  &.mediumSize {
+    zoom: 1.125;
+  }
+
+  &.largeSize {
+    zoom: 1.25;
+  }
+
+  .mainContent {
+    &.mediumSize {
+      zoom: 1.125;
+    }
+
+    &.largeSize {
+      zoom: 1.25;
+    }
+  }
+}
+
+// main
+main {
+  width: 100%;
+  position: relative;
+  padding-bottom: 80px;
+  flex-grow: 1;
+  flex-shrink: 0;
+
+  &:has(.innerPage) {
+    padding-top: 40px;
+    background: #F8F8F8;
+  }
+
+  &:has(aside) {
+    .container {
+      display: flex;
+      justify-content: space-between;
+      gap: 40px;
+
+      @include screen('tablet') {
+        flex-direction: column;
+      }
+    }
+
+    .mainContentBox {
+      flex-grow: 1;
+      @include transition(0.3);
+
+      @include screen('tablet') {
+        width: 100%;
+      }
+    }
+  }
+
+  .mainContentBox {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    .pageTitle {
+      font-size: Rem(36);
+      margin: 0;
+      font-weight: 600;
+    }
+
+    .mainContent {
+      width: 100%;
+    }
+  }
+}
+
+.noscroll {
+  overflow: hidden;
+  height: 100vh;
+  height: 100dvh;
+
+  .wrapper {
+    overflow: hidden;
+    height: 100vh;
+    height: 100dvh;
+  }
+}
+
+// wrapper
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+
+  @include screen('tablet') {
+    padding-top: 60px;
+  }
+}
+
+.container {
+  max-width: $domWidth;
+  padding: 0 30px;
+  margin: 0 auto;
+  position: relative;
+  box-sizing: content-box;
+}
+
+.codeBox {
+  padding: 20px;
+  border-radius: 8px;
+  background: #DEE0E3;
+  color: #383838;
+}
+
+textarea,
+select,
+input:not([type="checkBox"], [type="radio"]) {
+  min-height: 44px;
+  display: block;
+  padding: 6px 12px;
+  border-radius: 4px;
+  border: #DEE0E3 1px solid;
+  background: #FFF;
+  box-sizing: border-box !important;
+}
+
+input:not([type="checkBox"], [type="radio"]) {
+  line-height: 1;
+}
+
+a {
+  color: $aColor;
+  // @include transition(0.3);
+
+  &:hover {
+    color: $colorPrimary;
+  }
+}
+
+p {
+  margin-top: 16px;
+  margin-bottom: 16px;
+  word-break: break-all;
+}
+
+.floatLeft {
+  float: left;
+  margin-left: 0;
+  margin-right: 30px;
+}
+
+.floatRight {
+  float: right;
+  margin-right: 0;
+  margin-left: 30px;
+}
+
+.floatBox::after {
+  content: '';
+  display: block;
+  clear: both;
+}
+
+.picBox {
+  background: #f1f1f1;
+  padding: 12px;
+
+  .pic {
+    overflow: hidden;
+    margin: 0;
+  }
+
+  &.floatLeft,
+  &.floatRight {
+    width: flexWidth($flexTemplateGap, 5);
+    margin-bottom: 30px;
+
+    @include screen('mobile') {
+      width: 100%;
+      margin: 20px 0;
+      float: none;
+    }
+  }
+}
+
+h2 {
+  font-size: Rem(36);
+}
+
+h3 {
+  font-size: Rem(28);
+}
+
+h4 {
+  font-size: Rem(24);
+}
+
+h5 {
+  font-size: Rem(20);
+}
+
+h6 {
+  font-size: Rem(18);
+}
+
+h2,
+h3,
+h4,
+h5,
+h6 {
+  line-height: 1.16;
+  margin: 12px 0;
+  font-weight: 600;
+
+  & + p {
+    margin-top: 0;
+  }
+}
+
+.overlay {
+  position: fixed;
+  z-index: 55;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 100vh;
+  height: 100dvh;
+  display: none;
+  background: rgba(#000, 0.8);
+  cursor: pointer;
+
+  @include screen('tablet') {
+    top: 60px;
+    height: calc(100vh - 60px);
+    height: calc(100dvh - 60px);
+  }
+}
+
+.srOnly {
+  position: absolute !important;
+  top: 0 !important;
+  left: 0 !important;
+  width: 0px !important;
+  height: 0px !important;
+  overflow: hidden !important;
+  pointer-events: none !important;
+}
+
+.icon {
+  width: 20px;
+  height: 20px;
+}
+
+nav {
+  ul {
+    @include liReset;
+  }
+}
+
+.goCenter {
+  width: fit-content;
+  position: absolute;
+  top: -2.2em;
+  left: 0;
+  padding: 0 0.5em;
+  height: 2em;
+  line-height: 2em;
+  background: $colorPrimary;
+  color: #fff;
+  text-decoration: none;
+  z-index: 999999999999;
+  opacity: 0;
+  transition: 0.5s;
+  border-radius: 0px 0px 4px 4px;
+  color: #fff;
+
+  &:focus-visible,
+  &:hover {
+    top: 0;
+    opacity: 1;
+    box-shadow: none;
+    color: #fff;
+  }
+}
+
+#scrollTop {
+  position: fixed;
+  right: 34px;
+  bottom: 5vh;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.50);
+
+  display: flex;
+  width: 60px;
+  height: 60px;
+  padding: 4px;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  line-height: 1;
+  color: #fff;
+  @include transition(0.3);
+  opacity: 0;
+
+  @include screen('tablet') {
+    width: 40px;
+    height: 40px;
+    right: 10px;
+    font-size: Rem(13);
+    gap: 0px;
+  }
+
+  &::before {
+    content: '';
+    width: 10px;
+    height: 10px;
+    border-top: 2px solid #fff;
+    border-right: 2px solid #fff;
+    transform: rotate(-45deg);
+  }
+
+  &.active {
+    opacity: 1;
+  }
+}
+
+.pic {
+  overflow: hidden;
+  line-height: 0;
+
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+
+  figcaption {
+    line-height: 1.4;
+    margin-top: 5px;
+  }
+}
+
+[data-fancybox-close] {
+  span {
+    position: absolute;
+    width: 0;
+    height: 0;
+    opacity: 0;
+    pointer-events: none;
+  }
+}

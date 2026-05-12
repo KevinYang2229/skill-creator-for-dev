@@ -1,0 +1,256 @@
+@use 'sass:color';
+@use 'sass:math';
+@use 'sass:map';
+@use "../variable" as *; //變數
+@use "../basic/mixin" as *; //mixin
+
+.sitemap {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+
+  p {
+    margin: 0;
+  }
+
+  // kbd
+  kbd {
+    background: #fff;
+    border-radius: 4px;
+    color: #555;
+    font-weight: bold;
+    display: inline-block;
+    font-family: sans-serif;
+    vertical-align: middle;
+    border: 1px solid #bbb;
+    padding: 0 12px;
+    margin: 0 5px;
+
+    @include screen('mobile') {
+      font-size: Rem(14);
+      padding: 0 5px;
+      margin: 0 2px !important;
+    }
+  }
+
+  .accessKeyDefine {
+    background: #DEE0E3;
+    border-radius: 6px;
+    padding: 24px 32px;
+
+    @include screen('mobile') {
+      padding: 20px 20px;
+    }
+
+    ul {
+      margin-bottom: 10px;
+      padding-left: 20px;
+    }
+
+    kbd {
+      border-top: 1px solid #bbb;
+      border-bottom: 3px solid #bbb;
+      border-left: 2px solid #bbb;
+      border-right: 2px solid #bbb;
+      margin: 0 10px;
+    }
+
+    p {
+      margin: 14px 0;
+    }
+
+    .content {
+      background: #F1F1F1;
+      padding: 24px 0;
+      display: flex;
+
+      @include screen('tablet') {
+        flex-direction: column;
+        padding: 0 20px;
+      }
+
+      @include screen('mobile') {
+        padding: 0px 15px;
+      }
+
+      .title {
+        font-weight: 700;
+      }
+
+      .box {
+        width: 50%;
+        padding: 0 40px;
+
+        @include screen('tablet') {
+          width: 100%;
+          padding: 15px 10px;
+        }
+
+        &:first-child {
+          border-right: 1px solid #DEE0E3;
+
+          @include screen('tablet') {
+            border-right: none;
+            border-bottom: 1px solid #DEE0E3;
+          }
+        }
+
+        span {
+
+          @include screen('mobile') {
+            display: block;
+          }
+
+          & > kbd {
+
+            &:first-of-type {
+              margin-left: 0;
+            }
+          }
+        }
+      }
+    }
+  }
+
+  .accessKeyDefine,
+  .accessKeyDefineOther {
+
+    ul {
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+
+      @include screen('mobile') {
+        list-style: none;
+        padding: 0;
+      }
+
+      li {
+        & > kbd {
+          &:first-of-type {
+            margin-left: 0;
+          }
+        }
+
+        br {
+          @include screen('mobileMin') {
+            display: none;
+          }
+        }
+      }
+    }
+  }
+
+  .accessKeyDefineOther {
+    ul {
+      list-style: none;
+      @include liReset;
+    }
+
+    li {
+      display: flex;
+      flex-wrap: wrap;
+
+      kbd {
+        padding: 0 9px;
+        border: 1px solid #aaa;
+        background: transparent;
+      }
+    }
+  }
+
+  .cascading {
+    padding: 32px 0 0;
+    box-sizing: border-box;
+
+    ul {
+      @include liReset;
+
+      a {
+        display: flex;
+        gap: 6px;
+        text-decoration: none;
+        padding: 6px 16px;
+
+        &:not(:hover) {
+          color: #333333;
+        }
+      }
+
+      ul a {
+        border-bottom: 1px dashed #97A3B6;
+      }
+    }
+
+    & > ul {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 24px;
+      counter-reset: lv1;
+
+      @include screen('mobile') {
+        flex-direction: column;
+      }
+
+      & > li {
+        width: itemWidth(24, 4);
+        counter-increment: lv1;
+
+        @include screen('tablet') {
+          width: itemWidth(24, 3);
+        }
+
+        @include screen('mobile') {
+          width: 100%;
+        }
+
+        & > a {
+          border-radius: 4px;
+          background: #69707D;
+          color: #fff !important;
+          padding: 6px 16px;
+
+          &::before {
+            content: counter(lv1) '.';
+          }
+
+          &:hover {
+            background: $colorPrimary;
+          }
+        }
+
+        & > ul {
+          counter-reset: lv2;
+
+          & > li {
+            counter-increment: lv2;
+
+            & > a {
+              padding: 6px 16px 6px 24px;
+
+              &::before {
+                content: counter(lv1) '-' counter(lv2) '.';
+              }
+            }
+
+            & > ul {
+              counter-reset: lv3;
+
+              & > li {
+                counter-increment: lv3;
+
+                & > a {
+                  padding: 6px 16px 6px 40px;
+
+                  &::before {
+                    content: counter(lv1) '-' counter(lv2)'-' counter(lv3) '.';
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

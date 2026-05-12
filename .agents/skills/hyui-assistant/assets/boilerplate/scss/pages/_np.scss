@@ -1,0 +1,45 @@
+@use 'sass:color';
+@use 'sass:math';
+@use 'sass:map';
+@use "../variable" as *; //變數
+@use "../basic/mixin" as *; //mixin
+
+.nodeList {
+  ul {
+    @include liReset;
+
+    @include screen('mobile') {
+      gap: 10px;
+    }
+  }
+
+  a.card {
+    height: 100%;
+    display: flex;
+    padding: 16px;
+    gap: 12px;
+    border-radius: var(--borderRadius8);
+    border: 1px solid #DEE0E3;
+    background: #fff;
+    text-decoration: none;
+
+    &:not(:hover) {
+      color: $colorWord;
+    }
+
+    .num {
+      &::after {
+        content: '.';
+      }
+    }
+
+    p {
+      margin: 0;
+    }
+
+    &:hover {
+      color: $colorPrimary;
+      border-color: $colorPrimary;
+    }
+  }
+}

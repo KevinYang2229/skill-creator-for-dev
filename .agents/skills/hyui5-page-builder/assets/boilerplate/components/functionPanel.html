@@ -1,0 +1,53 @@
+<!--
+  functionPanel：內頁功能列。典型位置：breadcrumb + pageTitle 之後、mainContent 之前
+  可組合：字型大小 / 條件查詢 / 回上頁 / 列印 / Email / 分享
+  任何子元件都可單獨拿掉
+-->
+<div class="functionPanel">
+  <!-- 字型大小（頁內版） -->
+  <div class="fontSizeInner">
+    <span>字型大小：</span>
+    <ul>
+      <li><button type="button" class="smallSize">小</button></li>
+      <li><button type="button" class="mediumSize">中</button></li>
+      <li><button type="button" class="largeSize">大</button></li>
+    </ul>
+  </div>
+
+  <!-- 條件查詢（lp 類頁面常見） -->
+  <!--
+  <button type="button" class="contentSearchBtn btnPrimary">條件查詢</button>
+  <div class="contentSearchBox">
+    <form action="">
+      <div class="formBox searchContent">
+        <div class="formList inline">
+          <label class="formListTitle" for="conSearchTitle">標題：</label>
+          <div class="formContent">
+            <input type="text" id="conSearchTitle" placeholder="請輸入文字" />
+          </div>
+        </div>
+        <div class="formBtnBox">
+          <button type="reset" class="btnSecondary">清除</button>
+          <button type="submit" class="btnPrimary">送出</button>
+        </div>
+      </div>
+    </form>
+  </div>
+  -->
+
+  <a class="functionPanelBtn back" href="javascript:history.back()">回上一頁</a>
+  <a class="functionPanelBtn print" href="#">列印</a>
+  <a class="functionPanelBtn email" href="#">Email</a>
+
+  <!-- 分享 -->
+  <div class="shareBox">
+    <button type="button" class="functionPanelBtn share">share分享按鈕</button>
+    <div class="shareBoxList">
+      <ul>
+        <li><a href="#"><img src="images/basic/icon/share/facebook.svg" alt="facebook" /></a></li>
+        <li><a href="#"><img src="images/basic/icon/share/x.svg" alt="x" /></a></li>
+        <li><a href="#"><img src="images/basic/icon/share/line.svg" alt="line" /></a></li>
+      </ul>
+    </div>
+  </div>
+</div>

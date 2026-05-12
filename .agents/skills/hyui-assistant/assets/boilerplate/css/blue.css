@@ -1,0 +1,127 @@
+:root {
+  --RWDWidth: 991px;
+  --sideFixTop: 80px;
+  --borderRadius8: 8px;
+  --borderRadius4: 4px;
+}
+
+header {
+  color: rgb(229.6, 238.1, 245.7);
+  color: rgb(234.5, 240.4, 249.4);
+  background: linear-gradient(270deg, #057BB7 0%, #0156A2 100%);
+}
+header.sticky .mainMenu {
+  background: linear-gradient(270deg, #057BB7 0%, #0156A2 100%);
+}
+header h1 a {
+  color: #fff;
+}
+header h1 a:hover {
+  color: #fff;
+}
+header .topNav .accessKeyItem {
+  color: #fff;
+}
+header .topNav .navList ul button:not(:hover),
+header .topNav .navList ul a:not(:hover) {
+  color: #fff;
+}
+header .topNav .navList ul button:hover,
+header .topNav .navList ul a:hover {
+  color: #fff;
+  background: #0156A2;
+}
+header .topNav .navList .language button {
+  padding-left: 10px;
+  color: #fff;
+}
+header .topNav .navList .language button::after {
+  border-color: #fff transparent transparent transparent;
+}
+header .topNav .navList .language button:hover {
+  color: #fff;
+  background: #0156A2;
+}
+header .topNav .navList .language button:hover::after {
+  border-color: white transparent transparent transparent;
+}
+header .topNav .navList .language a:not(:hover) {
+  color: #333333;
+}
+header .topNav .navList .fontSize button {
+  padding-left: 10px;
+  color: #fff;
+}
+header .topNav .navList .fontSize button::after {
+  border-color: #fff transparent transparent transparent;
+}
+header .topNav .navList .fontSize button.active, header .topNav .navList .fontSize button:hover {
+  color: #fff;
+  background: #0156A2;
+}
+header .topNav .navList .fontSize button.active::after, header .topNav .navList .fontSize button:hover::after {
+  border-color: white transparent transparent transparent;
+}
+header .topNav .navList .fontSize ul button {
+  padding: 0;
+}
+header .topNav .navList .fontSize ul button:not(:hover) {
+  color: #333333;
+}
+header .topNav .navList .fontSize ul li.active button {
+  color: #fff;
+}
+header .topNav .navList .topSearch button {
+  padding-left: 10px;
+  color: #fff;
+}
+header .topNav .navList .topSearch button::after {
+  border-color: #fff transparent transparent transparent;
+}
+header .topNav .navList .topSearch button:hover {
+  color: #fff;
+  background: #0156A2;
+}
+header .topNav .navList .topSearch button:hover::after {
+  border-color: white transparent transparent transparent;
+}
+header .mainMenu {
+  position: relative;
+}
+header .mainMenu::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(255, 255, 255, 0.08);
+}
+header .megaMenu ul li.hasChild > a::after,
+header .menu ul li.hasChild > a::after {
+  border-color: #fff;
+}
+header .megaMenu ul li.hasChild.active > a,
+header .menu ul li.hasChild.active > a {
+  color: #fff;
+  background: #0156A2;
+}
+header .megaMenu > ul > li > a, header .megaMenu > ul > li > button,
+header .menu > ul > li > a,
+header .menu > ul > li > button {
+  color: #fff;
+}
+header .megaMenu > ul > li > a:hover, header .megaMenu > ul > li > button:hover,
+header .menu > ul > li > a:hover,
+header .menu > ul > li > button:hover {
+  color: #fff;
+  background: #0156A2;
+}
+header .webSearch .hotKeyword a:not(:hover) {
+  color: #fff;
+}
+header:has(.topSearch) .webSearch .hotKeyword a:not(:hover) {
+  color: #333333;
+}
+@media screen and (max-width: 991px) {
+  header:has(.topSearch) .webSearch .hotKeyword a:not(:hover) {
+    color: #fff;
+  }
+}/*# sourceMappingURL=blue.css.map */
